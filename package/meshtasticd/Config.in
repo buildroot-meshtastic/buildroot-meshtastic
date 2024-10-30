@@ -1,0 +1,5 @@
+config BR2_PACKAGE_MESHTASTICD
+	bool "meshtasticd"
+	select BR2_PACKAGE_HOST_PYTHON_PLATFORMIO
+	help
+	  meshtasticd portduino

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_HOST_PYTHON_PLATFORMIO
+	bool "host python-platformio"
+	help
+	  PlatformIO IDE
+
+	  https://platformio.org/

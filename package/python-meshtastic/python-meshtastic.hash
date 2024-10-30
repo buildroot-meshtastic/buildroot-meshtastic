@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/meshtastic/json
+md5  b2b1104474e0cd42d008593d93bf63aa  meshtastic-2.5.3.tar.gz
+sha256  96cc7aca7114d69c190b9bfe26edc436ff74422608aa4dd48db9ee8ee6987e30  meshtastic-2.5.3.tar.gz
+# Locally computed sha256 checksums
+sha256  fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0  LICENSES/GPL-3.0-only.txt
