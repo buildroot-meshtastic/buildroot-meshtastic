@@ -10,5 +10,6 @@ PYTHON_PLATFORMIO_SITE = https://files.pythonhosted.org/packages/32/a0/4b1d18da2
 PYTHON_PLATFORMIO_SETUP_TYPE = setuptools
 PYTHON_PLATFORMIO_LICENSE = Apache-2.0
 PYTHON_PLATFORMIO_LICENSE_FILES = LICENSE
+HOST_PYTHON_PLATFORMIO_DEPENDENCIES = host-python3 host-python-click host-python-semantic-version host-python-requests
 
 $(eval $(host-python-package))
