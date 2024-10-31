@@ -1,0 +1,7 @@
+config BR2_PACKAGE_HOST_PYTHON_TABULATE
+	bool "host python-tabulate"
+	help
+	  Pretty-print tabular data in Python, a library and
+	  a command-line utility.
+
+	  https://pypi.python.org/pypi/tabulate

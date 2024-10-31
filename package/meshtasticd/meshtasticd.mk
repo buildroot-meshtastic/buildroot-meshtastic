@@ -11,14 +11,22 @@ MESHTASTICD_SITE = $(call github,meshtastic,firmware,v$(MESHTASTICD_VERSION))
 # MESHTASTICD_GIT_SUBMODULES = YES
 MESHTASTICD_LICENSE = GPL-3.0
 MESHTASTICD_LICENSE_FILES = LICENSE
-MESHTASTICD_DEPENDENCIES = host-python3 host-python-click host-python-semantic-version host-python-requests host-python-platformio
+MESHTASTICD_DEPENDENCIES = \
+	host-openssl \
+	host-python3 \
+	host-python-click \
+	host-python-semantic-version \
+	host-python-requests \
+	host-python-tabulate \
+	host-python-serial \
+	host-python-platformio
 
 define MESHTASTICD_BUILD_CMDS
-	$(HOST_DIR)/bin/python3 -m platformio run --environment native --project-dir $(MESHTASTICD_SOURCE_DIR)
+	$(HOST_DIR)/bin/python3 -m platformio run --environment native --project-dir $(@D)
 endef
 
 define MESHTASTICD_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 0755 $(MESHTASTICD_SOURCE_DIR)/.pio/build/native/program \
+	$(INSTALL) -D -m 0755 $(@D)/.pio/build/native/program \
 		$(TARGET_DIR)/usr/bin/meshtasticd
 endef
 
