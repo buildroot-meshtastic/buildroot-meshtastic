@@ -48,6 +48,7 @@ define MESHTASTICD_BUILD_CMDS
 	TARGET_LD="$(TARGET_LD)" \
 	TARGET_OBJCOPY="$(TARGET_OBJCOPY)" \
 	TARGET_RANLIB="$(TARGET_RANLIB)" \
+	PLATFORMIO_CACHE_DIR=$(BUILD_DIR)/.platformio_cache \
 	PLATFORMIO_BUILD_FLAGS="-std=c++17 -I$(STAGING_DIR)/usr/include -L$(STAGING_DIR)/usr/lib -largp" \
 	$(HOST_DIR)/bin/python3 -m platformio run --environment native --project-dir $(@D)
 endef
