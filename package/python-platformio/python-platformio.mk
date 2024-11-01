@@ -11,6 +11,7 @@ PYTHON_PLATFORMIO_SETUP_TYPE = setuptools
 PYTHON_PLATFORMIO_LICENSE = Apache-2.0
 PYTHON_PLATFORMIO_LICENSE_FILES = LICENSE
 HOST_PYTHON_PLATFORMIO_DEPENDENCIES = \
+	host-gdb \
 	host-openssl \
 	host-python3 \
 	host-python-pip \

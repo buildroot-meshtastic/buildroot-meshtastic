@@ -1,0 +1,17 @@
+From: vidplace7 <vidplace7@gmail.com>
+Subject: [PATCH] Use platform-buildroot instead of platform-native
+
+Replaces platform-native with platform-buildroot in the portduino.ini file.
+
+Signed-off-by: vidplace7 <vidplace7@gmail.com>
+diff -ruN a/arch/portduino/portduino.ini b/arch/portduino/portduino.ini
+--- a/arch/portduino/portduino.ini	2024-10-23 22:21:49.000000000 -0400
++++ b/arch/portduino/portduino.ini	2024-10-31 17:12:13.066207880 -0400
+@@ -1,6 +1,6 @@
+ ; The Portduino based sim environment on top of any host OS, all hardware will be simulated
+ [portduino_base]
+-platform = https://github.com/meshtastic/platform-native.git#6b3796d697481c8f6e3f4aa5c111bd9979f29e64
++platform = https://github.com/vidplace7/platform-buildroot.git#bbcada22edd5f953a043f1590c1888e0387a0531
+ framework = arduino
+ 
+ build_src_filter = 
