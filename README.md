@@ -1,6 +1,7 @@
 # buildroot-meshtastic
 
-WIP / Not working yet
+Status: WIP! Compiles correctly and runs on SiPeed LicheeRV Nano with musl.
+    Not yet tested with real radio hardware.
 
 [Buildroot](https://buildroot.org/) packaging for Meshtastic and dependencies
 
