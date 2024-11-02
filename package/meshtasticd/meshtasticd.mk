@@ -5,9 +5,10 @@
 ################################################################################
 # See https://bootlin.com/~thomas/site/buildroot/adding-packages.html#generic-package-tutorial
 
+
 # MESHTASTICD_VERSION = 2.5.8.6485f03
-MESHTASTICD_VERSION = f6481d321d6dd13dc7bfc9b7d48ef297d20f7c7e
 # MESHTASTICD_SITE = $(call github,meshtastic,firmware,v$(MESHTASTICD_VERSION))
+MESHTASTICD_VERSION = f6481d321d6dd13dc7bfc9b7d48ef297d20f7c7e
 MESHTASTICD_SITE = $(call github,vidplace7,meshtastic-firmware,$(MESHTASTICD_VERSION))
 # MESHTASTICD_SITE_METHOD = git
 # MESHTASTICD_GIT_SUBMODULES = YES
@@ -35,9 +36,18 @@ MESHTASTICD_DEPENDENCIES += \
 	yaml-cpp \
 	bluez5_utils
 
+MESHTASTICD_PLATFORMIO_BUILD_FLAGS = \
+	-I$(STAGING_DIR)/usr/include \
+	-L$(STAGING_DIR)/usr/lib
+
 # For musl
+ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
 MESHTASTICD_DEPENDENCIES += \
 	argp-standalone
+MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
+	-std=c++17 \
+	-largp
+endif
 
 define MESHTASTICD_BUILD_CMDS
 	TARGET_AR="$(TARGET_AR)" \
@@ -48,8 +58,8 @@ define MESHTASTICD_BUILD_CMDS
 	TARGET_LD="$(TARGET_LD)" \
 	TARGET_OBJCOPY="$(TARGET_OBJCOPY)" \
 	TARGET_RANLIB="$(TARGET_RANLIB)" \
-	PLATFORMIO_CACHE_DIR=$(BUILD_DIR)/.platformio_cache \
-	PLATFORMIO_BUILD_FLAGS="-std=c++17 -I$(STAGING_DIR)/usr/include -L$(STAGING_DIR)/usr/lib -largp" \
+	PLATFORMIO_CACHE_DIR="$(BUILD_DIR)/.platformio_cache" \
+	PLATFORMIO_BUILD_FLAGS="$(MESHTASTICD_PLATFORMIO_BUILD_FLAGS)" \
 	$(HOST_DIR)/bin/python3 -m platformio run --environment native --project-dir $(@D)
 endef
 

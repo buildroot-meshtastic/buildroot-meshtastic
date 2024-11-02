@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     env:
-      BR2_EXTERNAL: ${{ github.workspace }}/external/buildroot-meshtastic
+      BR2_EXTERNAL: ${{ github.workspace }}/external
       # BR2_PACKAGE_HOST_PYTHON3: y
       # BR2_PACKAGE_HOST_PYTHON3_SSL: y
       BR2_PACKAGE_MESHTASTICD: y
@@ -59,18 +59,24 @@ jobs:
             path: 'cvi_mmf_sdk'  # TODO: make this name a global variable
             ref: 'main'
 
+      # - name: Download Toolchain
+      #   run: |
+      #         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+      #         pushd cvi_mmf_sdk
+      #           wget https://sophon-file.sophon.cn/sophon-prod-s3/drive/23/03/07/16/host-tools.tar.gz
+      #           tar xf host-tools.tar.gz
+      #         popd
+
+      - name: Checkout sophgo host-tools
+        uses: actions/checkout@v4
+        with:
+            repository: 'sophgo/host-tools'
+            path: 'cvi_mmf_sdk/host-tools'
+
       - name: Checkout this Repo to 'external'
         uses: actions/checkout@v4
         with:
             path: 'external'
-
-      - name: Download Toolchain
-        run: |
-              export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
-              pushd cvi_mmf_sdk
-                wget https://sophon-file.sophon.cn/sophon-prod-s3/drive/23/03/07/16/host-tools.tar.gz
-                tar xf host-tools.tar.gz
-              popd
 
       - name: Make System
         run: |
