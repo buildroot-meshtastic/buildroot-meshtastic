@@ -11,7 +11,7 @@ diff -ruN a/arch/portduino/portduino.ini b/arch/portduino/portduino.ini
  ; The Portduino based sim environment on top of any host OS, all hardware will be simulated
  [portduino_base]
 -platform = https://github.com/meshtastic/platform-native.git#6b3796d697481c8f6e3f4aa5c111bd9979f29e64
-+platform = https://github.com/vidplace7/platform-buildroot.git#4c8ba830a84608e133e538c5114ff5653ce20115
++platform = https://github.com/vidplace7/platform-buildroot.git#0c9984bc50ad12b9dfcc941df386a831367c9f5c
  framework = arduino
  
  build_src_filter = 
