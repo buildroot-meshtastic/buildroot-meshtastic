@@ -63,7 +63,18 @@ endef
 
 define MESHTASTICD_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 $(@D)/.pio/build/native/program \
-		$(TARGET_DIR)/usr/bin/meshtasticd
+		$(TARGET_DIR)/usr/sbin/meshtasticd
+endef
+
+# Service (Daemon) files -- Untested
+define MESHTASTICD_INSTALL_INIT_SYSV
+	$(INSTALL) -D -m 0755 $(MESHTASTICD_PKGDIR)/S99meshtasticd \
+		$(TARGET_DIR)/etc/init.d/S99meshtasticd
+endef
+
+define MESHTASTICD_INSTALL_INIT_SYSTEMD
+	$(INSTALL) -D -m 0644 $(MESHTASTICD_PKGDIR)/meshtasticd.service \
+		$(TARGET_DIR)/usr/lib/systemd/system/meshtasticd.service
 endef
 
 $(eval $(generic-package))
