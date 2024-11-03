@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_DOTMAP
+	bool "python-dotmap"
+	help
+	  A dot-access dict subclass
+
+	  https://pypi.org/project/dotmap

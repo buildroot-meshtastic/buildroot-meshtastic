@@ -2,6 +2,7 @@ config BR2_PACKAGE_PYTHON_MESHTASTIC
 	bool "python-meshtastic"
 	select BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
 	select BR2_PACKAGE_PYTHON_SERIAL # runtime
+	select BR2_PACKAGE_PYTHON_DOTMAP # runtime
 	help
 	  A Python client for use with Meshtastic devices. This small library (and example application) provides an easy API for sending and receiving messages over mesh radios.
 	  It also provides access to any of the operations/data available in the device user interface or the Android application.
