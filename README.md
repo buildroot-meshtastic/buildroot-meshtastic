@@ -50,6 +50,9 @@ Should work with other devices supported by buildroot as well.
 | `host-python-platformio` | host-dep for `meshtasticd`       |
 | `host-poetry-core`       | host-dep for `python-meshtastic` |
 | `python-dotmap`          | dep for `python-meshtastic`      |
+| `python-tabulate`        | dep for `python-meshtastic`      |
+| `python-pypubsub`        | dep for `python-meshtastic`      |
+| `python-print-color`     | dep for `python-meshtastic`      |
 
 ### Vendor-specific Dependencies
 

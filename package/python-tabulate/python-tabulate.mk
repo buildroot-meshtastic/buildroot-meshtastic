@@ -11,4 +11,5 @@ PYTHON_TABULATE_LICENSE = MIT
 PYTHON_TABULATE_LICENSE_FILES = LICENSE
 PYTHON_TABULATE_SETUP_TYPE = setuptools
 
+$(eval $(python-package))
 $(eval $(host-python-package))

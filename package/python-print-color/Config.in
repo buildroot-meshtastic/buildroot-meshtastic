@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PRINT_COLOR
+	bool "python-print-color"
+	select BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
+	help
+      A minimalist approach to terminal color printing in Python
+
+	  https://pypi.python.org/pypi/print-color
