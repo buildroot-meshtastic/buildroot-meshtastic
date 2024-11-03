@@ -4,3 +4,5 @@ config BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
 	  poetry-core, backported from buildroot 2024.08.x
 
 	  https://github.com/buildroot/buildroot/tree/2024.08.x/package/python-poetry-core
+
+comment "`python-poetry-core` backported for Buildroot versions older than 2024.05"
