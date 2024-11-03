@@ -48,6 +48,7 @@ Should work with other devices supported by buildroot as well.
 | `host-python-click`      | dep for `host-python-platformio` |
 | `host-python-tabulate`   | dep for `host-python-platformio` |
 | `host-python-platformio` | host-dep for `meshtasticd`       |
+| `host-poetry-core`       | host-dep for `python-meshtastic` |
 
 ### Vendor-specific Dependencies
 

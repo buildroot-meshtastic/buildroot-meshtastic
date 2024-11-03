@@ -1,0 +1,6 @@
+config BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
+	bool "host python-poetry-core"
+	help
+	  poetry-core, backported from buildroot 2024.08.x
+
+	  https://github.com/buildroot/buildroot/tree/2024.08.x/package/python-poetry-core

@@ -5,6 +5,8 @@
 ################################################################################
 # See https://bootlin.com/~thomas/site/buildroot/adding-packages.html#generic-package-tutorial
 
+# TODO Add meshtastic-web to this package
+# https://github.com/meshtastic/web
 
 MESHTASTICD_VERSION = musl-compat
 MESHTASTICD_SITE = https://github.com/vidplace7/meshtastic-firmware
