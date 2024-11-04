@@ -9,16 +9,10 @@ jobs:
       fail-fast: false
 
     runs-on: [ self-hosted, linux ]
-    container: ghcr.io/vidplace7/buildroot-meshtastic-builder:main
+    container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
 
-    env:
-      DEBIAN_FRONTEND: noninteractive
-      BR2_EXTERNAL: ${{ github.workspace }}/external
-      # BR2_PACKAGE_HOST_PYTHON3: y
-      # BR2_PACKAGE_HOST_PYTHON3_SSL: y
-      BR2_PACKAGE_MESHTASTICD: y
-      BR2_PACKAGE_PYTHON_MESHTASTIC: y
-      BR2_PACKAGE_CVI_PINMUX_SG200X: y
+    # env:
+    #   BR2_EXTERNAL: ${{ github.workspace }}/external
 
     steps:
       - name: ccache
@@ -36,16 +30,16 @@ jobs:
       - name: Checkout LicheeRV-Nano-Build Repo
         uses: actions/checkout@v4
         with:
-            repository: 'sipeed/LicheeRV-Nano-Build'
+            repository: 'buildroot-meshtastic/LicheeRV-Nano-Build'
             path: 'cvi_mmf_sdk'
-            ref: 'main'
+            ref: 'vid_testing'
 
       - name: Checkout sophgo host-tools
         uses: actions/checkout@v4
         with:
-            repository: 'sophgo/host-tools'
+            repository: 'buildroot-meshtastic/sophgo-host-tools'
             path: 'cvi_mmf_sdk/host-tools'
-            ref: 'master'
+            ref: 'meshtastic'
 
       - name: Checkout this Repo to 'external'
         uses: actions/checkout@v4
@@ -54,14 +48,12 @@ jobs:
 
       - name: Make System
         shell: bash
+        working-directory: ./cvi_mmf_sdk
         run: |
-              pushd cvi_mmf_sdk
-                source build/cvisetup.sh
-                defconfig sg2002_licheervnano_sd
-                make -C buildroot/ olddefconfig
-                make -C buildroot/ savedefconfig
-                build_all
-              popd
+              source build/cvisetup.sh
+              defconfig sg2002_licheervnano_sd
+              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external cvitek_SG200X_musl_riscv64_defconfig BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
+              build_all
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
