@@ -1,0 +1,65 @@
+name: "br-meshtastic: luckfox_pico"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+
+    runs-on: [ self-hosted, linux ]
+    container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
+
+    steps:
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          max-size: "20G"
+          create-symlink: true
+          key: luckfox_${{ runner.os }}
+
+      - name: Create Timestamp
+        run: |
+              echo "BUILD_ID=$(date +%Y%m%d_%H%M%S)" >> $GITHUB_ENV
+              echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+
+      - name: Checkout luckfox-pico Repo
+        uses: actions/checkout@v4
+        with:
+            repository: 'buildroot-meshtastic/luckfox-pico'
+            path: 'luckfox_pico_sdk'
+            ref: 'meshtastic'
+
+      - name: Checkout this Repo to 'external'
+        uses: actions/checkout@v4
+        with:
+            path: 'external'
+
+      - name: Add Toolchain to PATH
+        shell: bash
+        run: |
+              echo "$GITHUB_WORKSPACE/luckfox_pico_sdk/bin" >> $GITHUB_PATH
+              echo "$GITHUB_WORKSPACE/luckfox_pico_sdk/tools/linux/toolchain/arm-rockchip830-linux-uclibcgnueabihf/bin" >> $GITHUB_PATH
+
+      - name: Make System
+        shell: bash
+        working-directory: ./luckfox_pico_sdk
+        env:
+          BR2_EXTERNAL: ${{ github.workspace }}/external
+        run: |
+              echo $PATH
+              cp ./project/cfg/BoardConfig_IPC/BoardConfig-SD_CARD-Buildroot-RV1103_Luckfox_Pico-IPC.mk ./.BoardConfig.mk
+              chmod +x ./.BoardConfig.mk
+              source ./.BoardConfig.mk; ./build.sh info
+
+      # - name: 'Upload Artifact'
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     retention-days: 30
+      #     compression-level: 9
+      #     name: buildroot-meshtastic-licheerv_nano-${{ env.BUILD_ID }}
+      #     path: |
+      #             luckfox_pico_sdk/install/soc_sg2002_licheervnano_sd/images/*
+      #             luckfox_pico_sdk/install/soc_sg2002_licheervnano_sd/*.bin
+      #     if-no-files-found: error

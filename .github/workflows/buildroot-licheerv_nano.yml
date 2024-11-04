@@ -11,16 +11,13 @@ jobs:
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
 
-    # env:
-    #   BR2_EXTERNAL: ${{ github.workspace }}/external
-
     steps:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           max-size: "20G"
           create-symlink: true
-          key: ${{ runner.os }}
+          key: licheerv_${{ runner.os }}
 
       - name: Create Timestamp
         run: |
