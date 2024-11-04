@@ -18,7 +18,6 @@ MESHTASTICD_INSTALL_STAGING = YES
 
 # For platformio
 MESHTASTICD_DEPENDENCIES = \
-	host-gdb \
 	host-openssl \
 	host-python3 \
 	host-python-pip \
@@ -41,14 +40,11 @@ MESHTASTICD_PLATFORMIO_BUILD_FLAGS = \
 	-L$(STAGING_DIR)/usr/lib
 
 # For musl
-ifeq ($(BR2_PACKAGE_ARP_STANDALONE),y)
-MESHTASTICD_DEPENDENCIES += argp-standalone
-MESHTASTICD_PLATFORMIO_BUILD_FLAGS += -largp
-endif
-
 ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
+MESHTASTICD_DEPENDENCIES += argp-standalone
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
-	-std=c++17
+	-std=c++17 \
+	-largp
 endif
 
 define MESHTASTICD_BUILD_CMDS

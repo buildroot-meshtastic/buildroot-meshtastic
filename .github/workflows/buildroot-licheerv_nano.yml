@@ -1,0 +1,73 @@
+name: "br-meshtastic: licheerv_nano"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+
+    runs-on: [ self-hosted, linux ]
+    container: ghcr.io/vidplace7/buildroot-meshtastic-builder:main
+
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      BR2_EXTERNAL: ${{ github.workspace }}/external
+      # BR2_PACKAGE_HOST_PYTHON3: y
+      # BR2_PACKAGE_HOST_PYTHON3_SSL: y
+      BR2_PACKAGE_MESHTASTICD: y
+      BR2_PACKAGE_PYTHON_MESHTASTIC: y
+      BR2_PACKAGE_CVI_PINMUX_SG200X: y
+
+    steps:
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          max-size: "20G"
+          create-symlink: true
+          key: ${{ runner.os }}
+
+      - name: Create Timestamp
+        run: |
+              echo "BUILD_ID=$(date +%Y%m%d_%H%M%S)" >> $GITHUB_ENV
+              echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+
+      - name: Checkout LicheeRV-Nano-Build Repo
+        uses: actions/checkout@v4
+        with:
+            repository: 'sipeed/LicheeRV-Nano-Build'
+            path: 'cvi_mmf_sdk'
+            ref: 'main'
+
+      - name: Checkout sophgo host-tools
+        uses: actions/checkout@v4
+        with:
+            repository: 'sophgo/host-tools'
+            path: 'cvi_mmf_sdk/host-tools'
+            ref: 'master'
+
+      - name: Checkout this Repo to 'external'
+        uses: actions/checkout@v4
+        with:
+            path: 'external'
+
+      - name: Make System
+        shell: bash
+        run: |
+              pushd cvi_mmf_sdk
+                source build/cvisetup.sh
+                defconfig sg2002_licheervnano_sd
+                make -C buildroot/ olddefconfig
+                make -C buildroot/ savedefconfig
+                build_all
+              popd
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 30
+          name: buildroot-meshtastic-licheerv_nano-${{ env.BUILD_ID }}
+          path: |
+                  cvi_mmf_sdk/install/soc_sg2002_licheervnano_sd/images/*
+                  cvi_mmf_sdk/install/soc_sg2002_licheervnano_sd/*.bin
