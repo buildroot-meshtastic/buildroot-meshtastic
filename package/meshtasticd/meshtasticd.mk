@@ -8,8 +8,8 @@
 # TODO Add meshtastic-web to this package
 # https://github.com/meshtastic/web
 
-MESHTASTICD_VERSION = 9415254dda61b44bb7a4aa7028d369b9693f5b24
-MESHTASTICD_SITE = https://github.com/meshtastic/firmware
+MESHTASTICD_VERSION = 777e34e7066dba42116a503cb36b25f3fc593cc0
+MESHTASTICD_SITE = https://github.com/vidplace7/meshtastic-firmware
 MESHTASTICD_SITE_METHOD = git
 MESHTASTICD_GIT_SUBMODULES = YES
 MESHTASTICD_LICENSE = GPL-3.0
