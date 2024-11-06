@@ -1,0 +1,65 @@
+name: "br-meshtastic: raspberrypi"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # - name: "Raspberry Pi Zero"
+          #   defconfig: "raspberrypi0_defconfig"
+          - name: "Raspberry Pi Zero W"
+            defconfig: "raspberrypi0w_defconfig"
+          - name: "Raspberry Pi Zero 2 W"
+            defconfig: "raspberrypizero2w_defconfig"
+
+    runs-on: [ self-hosted, linux ]
+    container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
+
+    env:
+      BR2_EXTERNAL: ${{ github.workspace }}/external
+
+    steps:
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          max-size: "20G"
+          create-symlink: true
+          key: ${{ runner.os }}
+
+      - name: Create Timestamp
+        run: |
+              echo "BUILD_ID=$(date +%Y%m%d_%H%M%S)" >> $GITHUB_ENV
+              echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+
+      - name: Checkout Buildroot Repo
+        uses: actions/checkout@v4
+        with:
+            repository: 'buildroot/buildroot'
+            path: 'buildroot'
+            ref: '2024.08.x'
+
+      - name: Checkout this Repo to 'external'
+        uses: actions/checkout@v4
+        with:
+            path: 'external'
+
+      - name: Make System
+        shell: bash
+        working-directory: ./buildroot
+        env:
+          BR2_EXTERNAL: ${{ github.workspace }}/external
+        run: |
+              make ${{ matrix.defconfig }}
+              make
+
+      # - name: 'Upload Artifact'
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     retention-days: 30
+      #     name: buildroot-meshtastic-raspberrypi-${{ env.BUILD_ID }}
+      #     path: |
+      #             buildroot/*
