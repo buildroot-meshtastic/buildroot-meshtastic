@@ -39,8 +39,8 @@ MESHTASTICD_PLATFORMIO_BUILD_FLAGS = \
 	-I$(STAGING_DIR)/usr/include \
 	-L$(STAGING_DIR)/usr/lib
 
-# For musl
-ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
+# For ulibc / musl
+ifeq ($(BR2_PACKAGE_ARGP_STANDALONE),y)
 MESHTASTICD_DEPENDENCIES += argp-standalone
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS += -largp
 endif
