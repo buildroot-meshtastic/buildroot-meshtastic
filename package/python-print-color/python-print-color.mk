@@ -10,7 +10,6 @@ PYTHON_PRINT_COLOR_SITE = https://files.pythonhosted.org/packages/eb/32/601fd900
 PYTHON_PRINT_COLOR_LICENSE = Apache-2.0
 PYTHON_PRINT_COLOR_LICENSE_FILES = LICENSE
 PYTHON_PRINT_COLOR_SETUP_TYPE = pep517
-PYTHON_PRINT_COLOR_DEPENDENCIES = \
-	host-python-poetry-core
+# PYTHON_PRINT_COLOR_DEPENDENCIES = host-python-poetry-core
 
 $(eval $(python-package))

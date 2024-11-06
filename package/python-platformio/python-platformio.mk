@@ -13,7 +13,6 @@ PYTHON_PLATFORMIO_LICENSE_FILES = LICENSE
 HOST_PYTHON_PLATFORMIO_DEPENDENCIES = \
 	host-openssl \
 	host-python3 \
-	host-python-pip \
 	host-python-click-hack \
 	host-python-semantic-version \
 	host-python-requests \

@@ -1,6 +1,7 @@
 config BR2_PACKAGE_HOST_PYTHON_PLATFORMIO
 	bool "host python-platformio"
-	select BR2_PACKAGE_HOST_PYTHON_PIP # runtime
+	select BR2_PACKAGE_HOST_PYTHON3 # runtime
+	select BR2_PACKAGE_HOST_PYTHON3_SSL # runtime
 	select BR2_PACKAGE_HOST_PYTHON_CLICK_HACK # runtime
 	select BR2_PACKAGE_HOST_PYTHON_SEMANTIC_VERSION # runtime
 	select BR2_PACKAGE_HOST_PYTHON_REQUESTS # runtime

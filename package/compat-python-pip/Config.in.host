@@ -1,0 +1,11 @@
+config BR2_PACKAGE_HOST_COMPAT_PYTHON_PIP
+	bool "host compat-python-pip"
+	depends on !BR2_PACKAGE_HOST_PYTHON_PIP
+	default y if !BR2_PACKAGE_HOST_PYTHON_PIP
+	help
+	  The PyPA recommended tool for installing Python packages.
+	  Host-package backported from buildroot 2023.05.x
+
+	  https://pip.pypa.io/
+
+comment "`python-poetry-core` backported for Buildroot versions older than 2023.05"

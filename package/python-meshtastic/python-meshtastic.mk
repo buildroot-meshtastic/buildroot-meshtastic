@@ -11,7 +11,6 @@ PYTHON_MESHTASTIC_SETUP_TYPE = pep517
 PYTHON_MESHTASTIC_LICENSE = GPL-3.0
 PYTHON_MESHTASTIC_LICENSE_FILES = LICENSES/GPL-3.0-only.txt
 PYTHON_MESHTASTIC_DEPENDENCIES = \
-	host-python-poetry-core \
 	python-requests \
 	python-protobuf \
 	python-serial \

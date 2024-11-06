@@ -1,5 +1,7 @@
-config BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
-	bool "host python-poetry-core"
+config BR2_PACKAGE_HOST_COMPAT_PYTHON_POETRY_CORE
+	bool "host compat-python-poetry-core"
+	depends on !BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
+	default y if !BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
 	help
 	  poetry-core, backported from buildroot 2024.08.x
 

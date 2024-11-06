@@ -1,6 +1,5 @@
 config BR2_PACKAGE_PYTHON_MESHTASTIC
 	bool "python-meshtastic"
-	select BR2_PACKAGE_HOST_PYTHON_POETRY_CORE
 	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
 	select BR2_PACKAGE_PYTHON_PROTOBUF # runtime
 	select BR2_PACKAGE_PYTHON_SERIAL # runtime
