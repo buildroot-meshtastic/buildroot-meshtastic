@@ -71,14 +71,18 @@ jobs:
       - name: Setup board config (lunch)
         shell: expect {0}
         working-directory: ./luckfox_pico_sdk
+        # luckfox sdk forces an interactive shell, so we need to use expect
         run: |
               spawn ./build.sh lunch
 
               expect "Lunch menu...pick the Luckfox Pico hardware version:"
+              sleep 0.5
               send "${{ matrix.lunch_board }}\r"
               expect "Lunch menu...pick the boot medium:"
+              sleep 0.5
               send "${{ matrix.lunch_boot_medium }}\r"
               expect "Lunch menu...pick the system version"
+              sleep 0.5
               send "0\r"
               expect eof
 
@@ -88,21 +92,32 @@ jobs:
         run: |
               ./build.sh info
 
+      - name: Buildroot Config
+        shell: expect {0}
+        working-directory: ./luckfox_pico_sdk
+        env:
+          TERM: xterm
+          BR2_EXTERNAL: ${{ github.workspace }}/external
+        # luckfox sdk forces an ncurses menu, so we need to use expect
+        run: |
+              spawn script -q -c "./build.sh buildrootconfig" /dev/null
+              expect "< Exit >"
+              sleep 0.5
+              send "E"
+              expect eof
+
       - name: Make System
         shell: bash
         working-directory: ./luckfox_pico_sdk
-        # env:
-        #   BR2_EXTERNAL: ${{ github.workspace }}/external
         run: |
               ./build.sh
 
-      # - name: 'Upload Artifact'
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     retention-days: 30
-      #     compression-level: 9
-      #     name: buildroot-meshtastic-licheerv_nano-${{ env.BUILD_ID }}
-      #     path: |
-      #             luckfox_pico_sdk/install/soc_sg2002_licheervnano_sd/images/*
-      #             luckfox_pico_sdk/install/soc_sg2002_licheervnano_sd/*.bin
-      #     if-no-files-found: error
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 30
+          compression-level: 9
+          name: buildroot-meshtastic-licheerv_nano-${{ env.BUILD_ID }}
+          path: |
+                  luckfox_pico_sdk/IMAGE/*
+          if-no-files-found: error
