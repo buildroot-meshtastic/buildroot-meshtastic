@@ -98,7 +98,7 @@ jobs:
         env:
           TERM: xterm
           BR2_EXTERNAL: ${{ github.workspace }}/external
-        # luckfox sdk forces an ncurses menu, so we need to use expect
+        # luckfox sdk forces an ncurses menu, so we need to use expect and a pseudo terminal
         run: |
               spawn script -q -c "./build.sh buildrootconfig" /dev/null
               expect "< Exit >"
@@ -117,7 +117,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: buildroot-meshtastic-licheerv_nano-${{ env.BUILD_ID }}
+          name: buildroot-meshtastic-luckfox_pico-${{ env.BUILD_ID }}
           path: |
                   luckfox_pico_sdk/IMAGE/*
           if-no-files-found: error

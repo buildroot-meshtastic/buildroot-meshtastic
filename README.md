@@ -43,16 +43,17 @@ Should work with other devices supported by buildroot as well.
 
 ## Dependencies
 
-| Package                  | Description                      |
-| ------------------------ | -------------------------------- |
-| `host-python-click`      | dep for `host-python-platformio` |
-| `host-python-tabulate`   | dep for `host-python-platformio` |
-| `host-python-platformio` | host-dep for `meshtasticd`       |
-| `host-poetry-core`       | host-dep for `python-meshtastic` |
-| `python-dotmap`          | dep for `python-meshtastic`      |
-| `python-tabulate`        | dep for `python-meshtastic`      |
-| `python-pypubsub`        | dep for `python-meshtastic`      |
-| `python-print-color`     | dep for `python-meshtastic`      |
+| Package                   | Description                      |
+| ------------------------- | -------------------------------- |
+| `host-compat-python-pip`  | host-dep for multiple packages   |
+| `host-compat-poetry-core` | host-dep for multiple packages   |
+| `host-python-click-hack`  | dep for `host-python-platformio` |
+| `host-python-tabulate`    | dep for `host-python-platformio` |
+| `host-python-platformio`  | host-dep for `meshtasticd`       |
+| `python-dotmap`           | dep for `python-meshtastic`      |
+| `python-tabulate`         | dep for `python-meshtastic`      |
+| `python-pypubsub`         | dep for `python-meshtastic`      |
+| `python-print-color`      | dep for `python-meshtastic`      |
 
 ### Vendor-specific Dependencies
 

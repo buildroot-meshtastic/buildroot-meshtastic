@@ -32,7 +32,7 @@ MESHTASTICD_DEPENDENCIES += \
 	host-python-platformio \
 	libgpiod \
 	yaml-cpp \
-	bluez5_utils
+	bluez5_utils-headers
 
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS = \
 	-I$(STAGING_DIR)/usr/include \
