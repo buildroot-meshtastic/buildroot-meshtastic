@@ -1,0 +1,9 @@
+config BR2_PACKAGE_HOST_PYTHON_CLICK_HACK
+	bool "host python-click-hack"
+	help
+	  A simple wrapper around optparse for powerful command line
+	  utilities.
+
+	  https://pypi.python.org/pypi/click
+
+comment "`python-click` host package. Couldn't re-use the same package name as upstream."
