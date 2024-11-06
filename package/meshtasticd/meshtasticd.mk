@@ -35,15 +35,14 @@ MESHTASTICD_DEPENDENCIES += \
 	bluez5_utils-headers
 
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS = \
+	-std=c++17 \
 	-I$(STAGING_DIR)/usr/include \
 	-L$(STAGING_DIR)/usr/lib
 
 # For musl
 ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
 MESHTASTICD_DEPENDENCIES += argp-standalone
-MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
-	-std=c++17 \
-	-largp
+MESHTASTICD_PLATFORMIO_BUILD_FLAGS += -largp
 endif
 
 define MESHTASTICD_BUILD_CMDS
