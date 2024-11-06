@@ -11,11 +11,11 @@ CVI_PINMUX_SITE = $(call github,milkv-duo,cvi-pinmux,$(CVI_PINMUX_VERSION))
 CVI_PINMUX_INSTALL_STAGING = YES
 
 ifeq ($(BR2_PACKAGE_CVI_PINMUX_CV180X),y)
-    CVI_SRC_DIR = cv180x
+	CVI_SRC_DIR = cv180x
 else ifeq ($(BR2_PACKAGE_CVI_PINMUX_SG200X),y)
-    CVI_SRC_DIR = sg200x
-else
-    $(error "Please select either CV180X or SG200X")
+	CVI_SRC_DIR = sg200x
+else ifeq ($(BR2_PACKAGE_CVI_PINMUX),y)
+	$(error "Please select either CV180X or SG200X")
 endif
 
 define CVI_PINMUX_BUILD_CMDS
