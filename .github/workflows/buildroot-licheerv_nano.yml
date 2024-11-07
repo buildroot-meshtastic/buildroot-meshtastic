@@ -43,6 +43,14 @@ jobs:
         with:
             path: 'external'
 
+      - name: Cache Buildroot
+        id: cache-buildroot
+        uses: actions/cache@v4
+        with:
+          path: |
+            cvi_mmf_sdk/buildroot/dl
+          key: br-licheerv_${{ runner.os }}
+
       - name: Make System
         shell: bash
         working-directory: ./cvi_mmf_sdk
