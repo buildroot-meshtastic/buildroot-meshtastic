@@ -1,28 +1,34 @@
 # buildroot-meshtastic
 
-Status: WIP! Compiles correctly and runs on SiPeed LicheeRV Nano with musl.
-    Not yet tested with real radio hardware.
+[Buildroot](https://buildroot.org/) packaging for Meshtastic and dependencies.
 
-[Buildroot](https://buildroot.org/) packaging for Meshtastic and dependencies
-
-Intended for use with embedded linux devices:
+Intended for use with embedded Linux devices:
 - [Sipeed LicheeRV Nano](https://wiki.sipeed.com/hardware/en/lichee/RV_Nano/1_intro.html)
-    - Primary testing target currently
+    - Primary testing target currently, working!
+    - Compilation working with [musl](https://musl.libc.org/)
 - [LuckFox Pico](https://wiki.luckfox.com/luckfox-pico/luckfox-pico-quick-start/)
+    - Untested
+    - Compilation working with [uClibc-ng](https://uclibc-ng.org/)
 - [Raspberry Pi Zero series](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#zero-series)
+    - Untested
+    - Compilation working with [glibc](https://sourceware.org/glibc/)
 
-Should work with other devices supported by buildroot as well.
+Should work with other devices supported by Buildroot as well.
 
 ---
 
 ## Usage
 
-1. Clone the Buildroot repository
-2. Clone this repository into the `external/` directory
+Prebuilt images are provided in the `Actions` tab.
+
+## Build it yourself!
+
+1. Clone the Buildroot repository for the target device
+2. Clone *this* repository into the `external/` directory
 3. Enable the packages in the Buildroot "external" menuconfig
     ```sh
     cd buildroot
-    make BR2_EXTERNAL=path_to_external/buildroot-meshtastic menuconfig
+    make BR2_EXTERNAL=/absolute/path_to/external/ menuconfig
     ```
 4. Build the image
     ```sh
