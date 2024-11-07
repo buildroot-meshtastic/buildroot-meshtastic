@@ -26,6 +26,19 @@ MESHTASTICD_DEPENDENCIES = \
 	host-python-serial \
 	host-python-pyelftools
 
+# backport workarounds
+# revisit this
+ifeq ($(BR2_PACKAGE_HOST_PYTHON_PIP),y)
+MESHTASTICD_DEPENDENCIES += host-python-pip
+else
+MESHTASTICD_DEPENDENCIES += host-compat-python-pip
+endif
+ifeq ($(BR2_PACKAGE_HOST_PYTHON_POETRY_CORE),y)
+MESHTASTICD_DEPENDENCIES += host-python-poetry-core
+else
+MESHTASTICD_DEPENDENCIES += host-compat-python-poetry-core
+endif
+
 # meshtasticd deps
 MESHTASTICD_DEPENDENCIES += \
 	host-python-platformio \
