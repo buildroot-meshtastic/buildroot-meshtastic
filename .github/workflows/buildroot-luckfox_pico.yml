@@ -111,7 +111,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            luckfox_pico_sdk/buildroot/buildroot-*/dl
+            luckfox_pico_sdk/sysdrv/source/buildroot/buildroot-*/dl
           key: br-luckfox_${{ runner.os }}
 
       - name: Make System
@@ -127,5 +127,5 @@ jobs:
           compression-level: 9
           name: buildroot-meshtastic-luckfox_pico-${{ env.BUILD_ID }}
           path: |
-                  luckfox_pico_sdk/IMAGE/*
+                  luckfox_pico_sdk/IMAGE/IPC_*/*
           if-no-files-found: error
