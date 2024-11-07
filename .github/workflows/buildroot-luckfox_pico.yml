@@ -106,6 +106,14 @@ jobs:
               send "E"
               expect eof
 
+      - name: Cache Buildroot
+        id: cache-buildroot
+        uses: actions/cache@v4
+        with:
+          path: |
+            luckfox_pico_sdk/buildroot/buildroot-*/dl
+          key: br-luckfox_${{ runner.os }}
+
       - name: Make System
         shell: bash
         working-directory: ./luckfox_pico_sdk
