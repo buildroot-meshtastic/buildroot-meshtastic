@@ -10,11 +10,11 @@ jobs:
       matrix:
         include:
           # - name: "RPi Zero"
-          #   defconfig: "raspberrypi0_defconfig"
+          #   defconfig: "raspberrypi0"
           # - name: "RPi Zero W"
-          #   defconfig: "raspberrypi0w_defconfig"
+          #   defconfig: "raspberrypi0w"
           - name: "RPi Zero 2 W"
-            defconfig: "raspberrypizero2w_defconfig"
+            defconfig: "raspberrypizero2w"
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
@@ -57,16 +57,16 @@ jobs:
         working-directory: ./buildroot
         env:
           BR2_EXTERNAL: ${{ github.workspace }}/external
-          BR2_TARGET_ROOTFS_EXT2_SIZE: "240M"  # 120M by default
           FORCE_UNSAFE_CONFIGURE: "1"  # Bypass warning about root user, this is a container!
         run: |
-              make ${{ matrix.defconfig }}
+              make ${{ matrix.defconfig }}_defconfig
               make
 
-      # - name: 'Upload Artifact'
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     retention-days: 30
-      #     name: buildroot-meshtastic-raspberrypi-${{ matrix.defconfig }}
-      #     path: |
-      #             buildroot/*
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 30
+          compression-level: 9
+          name: buildroot-meshtastic-raspberrypi-${{ matrix.defconfig }}
+          path: |
+                  buildroot/output/images/*

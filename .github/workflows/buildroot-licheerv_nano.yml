@@ -37,7 +37,7 @@ jobs:
         with:
             repository: 'buildroot-meshtastic/LicheeRV-Nano-Build'
             path: 'cvi_mmf_sdk'
-            ref: 'licheervnano'
+            ref: 'licheervnano'  # markbirss branch
 
       - name: Checkout sophgo host-tools
         uses: actions/checkout@v4

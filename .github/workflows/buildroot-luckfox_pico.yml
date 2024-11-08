@@ -43,7 +43,7 @@ jobs:
         with:
           max-size: "20G"
           create-symlink: true
-          key: luckfox_${{ runner.os }}
+          key: ${{ matrix.name }}
 
       - name: Create Timestamp
         run: |
@@ -55,7 +55,7 @@ jobs:
         with:
             repository: 'buildroot-meshtastic/luckfox-pico'
             path: 'luckfox_pico_sdk'
-            ref: 'meshtastic'
+            ref: 'luckfox'  # markbirss branch
 
       - name: Checkout this Repo to 'external'
         uses: actions/checkout@v4
@@ -112,7 +112,7 @@ jobs:
         with:
           path: |
             luckfox_pico_sdk/sysdrv/source/buildroot/buildroot-*/dl
-          key: br-luckfox_${{ runner.os }}
+          key: br-${{ matrix.name }}
 
       - name: Make System
         shell: bash
@@ -125,7 +125,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: buildroot-meshtastic-luckfox_pico-${{ matrix.name }}
+          name: buildroot-meshtastic-${{ matrix.name }}
           path: |
                   luckfox_pico_sdk/IMAGE/IPC_*/*
           if-no-files-found: error
