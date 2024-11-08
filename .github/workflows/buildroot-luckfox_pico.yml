@@ -12,27 +12,28 @@ jobs:
           - name: "RV1103_Luckfox_Pico"
             lunch_board: "0"
             lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1103_Luckfox_Pico_Mini_A"
-          #   lunch_board: "1"
-          #   lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1103_Luckfox_Pico_Mini_B"
-          #   lunch_board: "2"
-          #   lunch_boot_medium: "0"  # SD Card
+          - name: "RV1103_Luckfox_Pico_Mini_A"
+            lunch_board: "1"
+            lunch_boot_medium: "0"  # SD Card
+          - name: "RV1103_Luckfox_Pico_Mini_B"
+            lunch_board: "2"
+            lunch_boot_medium: "1"  # eMMC
+          #   # include/wind.h is missing for Pico Plus?
           # - name: "RV1103_Luckfox_Pico_Plus"
           #   lunch_board: "3"
           #   lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1106_Luckfox_Pico_Pro"
-          #   lunch_board: "4"
-          #   lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1106_Luckfox_Pico_Max"
-          #   lunch_board: "5"
-          #   lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1106_Luckfox_Pico_Ultra"
-          #   lunch_board: "6"
-          #   lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1106_Luckfox_Pico_Ultra_W"
-          #   lunch_board: "7"
-          #   lunch_boot_medium: "0"  # SD Card
+          - name: "RV1106_Luckfox_Pico_Pro"
+            lunch_board: "4"
+            lunch_boot_medium: "0"  # SD Card
+          - name: "RV1106_Luckfox_Pico_Max"
+            lunch_board: "5"
+            lunch_boot_medium: "0"  # SD Card
+          - name: "RV1106_Luckfox_Pico_Ultra"
+            lunch_board: "6"
+            lunch_boot_medium: "0"  # SD Card
+          - name: "RV1106_Luckfox_Pico_Ultra_W"
+            lunch_board: "7"
+            lunch_boot_medium: "0"  # SD Card
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
@@ -106,13 +107,13 @@ jobs:
               send "E"
               expect eof
 
-      - name: Cache Buildroot
-        id: cache-buildroot
-        uses: actions/cache@v4
-        with:
-          path: |
-            luckfox_pico_sdk/sysdrv/source/buildroot/buildroot-*/dl
-          key: br-${{ matrix.name }}
+      # - name: Cache Buildroot
+      #   id: cache-buildroot
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       luckfox_pico_sdk/sysdrv/source/buildroot/buildroot-*/dl
+      #     key: br-${{ matrix.name }}
 
       - name: Make System
         shell: bash
