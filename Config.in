@@ -6,6 +6,7 @@ source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-tabulate/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-tabulate/Config.in.host"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-platformio/Config.in.host"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/meshtasticd/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/meshtasticd-web/Config.in"
 
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-dotmap/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-pypubsub/Config.in"

@@ -5,14 +5,13 @@ Removes include of /usr/include in the platformio.ini file.
 
 Signed-off-by: vidplace7 <vidplace7@gmail.com>
 diff -ruN a/variants/portduino/platformio.ini b/variants/portduino/platformio.ini
---- a/variants/portduino/platformio.ini	2024-10-23 22:21:49.000000000 -0400
-+++ b/variants/portduino/platformio.ini	2024-10-31 19:56:52.319599676 -0400
-@@ -2,7 +2,7 @@
- extends = portduino_base
+--- a/variants/portduino/platformio.ini
++++ b/variants/portduino/platformio.ini
+@@ -3,7 +3,6 @@ extends = portduino_base
  ; The pkg-config commands below optionally add link flags.
  ; the || : is just a "or run the null command" to avoid returning an error code
--build_flags = ${portduino_base.build_flags} -O0 -I variants/portduino -I /usr/include
-+build_flags = ${portduino_base.build_flags} -O0 -I variants/portduino
+ build_flags = ${portduino_base.build_flags} -O0 -I variants/portduino
+-  -I /usr/include
    !pkg-config --libs libulfius --silence-errors || :
    !pkg-config --libs openssl --silence-errors || :
  board = cross_platform

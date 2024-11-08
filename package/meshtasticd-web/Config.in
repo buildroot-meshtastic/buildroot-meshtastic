@@ -1,0 +1,8 @@
+config BR2_PACKAGE_MESHTASTICD_WEB
+	bool "meshtasticd-web"
+	depends on BR2_PACKAGE_MESHTASTICD
+	# default y
+	help
+	  meshtasticd web interface
+
+	  https://github.com/meshtastic/web

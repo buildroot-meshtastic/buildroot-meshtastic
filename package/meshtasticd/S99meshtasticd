@@ -16,17 +16,6 @@ stop() {
 	start-stop-daemon -K -q -p $PIDFILE && echo "OK" || echo "Failed"
 	rm -f $PIDFILE
 }
-status() {
-	if [ -f "$PIDFILE" ]; then
-		if ps -p $(cat $PIDFILE) > /dev/null 2>&1; then
-			echo "$NAME is running (PID: $(cat $PIDFILE))"
-		else
-			echo "$NAME is not running, but PID file exists"
-		fi
-	else
-		echo "$NAME is not running"
-	fi
-}
 restart() {
 	stop
 	start
@@ -39,14 +28,11 @@ case "$1" in
 	stop)
 		stop
 		;;
-	status)
-		status
-		;;
 	restart|reload)
 		restart
 		;;
 	*)
-		echo "Usage: $0 {start|stop|status|restart}"
+		echo "Usage: $0 {start|stop|restart}"
 		exit 1
 esac
 

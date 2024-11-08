@@ -13,8 +13,8 @@ jobs:
           #   defconfig: "raspberrypi0_defconfig"
           - name: "Raspberry Pi Zero W"
             defconfig: "raspberrypi0w_defconfig"
-          - name: "Raspberry Pi Zero 2 W"
-            defconfig: "raspberrypizero2w_defconfig"
+          # - name: "Raspberry Pi Zero 2 W"
+          #   defconfig: "raspberrypizero2w_defconfig"
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
