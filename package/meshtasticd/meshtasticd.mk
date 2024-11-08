@@ -5,10 +5,6 @@
 ################################################################################
 # See https://bootlin.com/~thomas/site/buildroot/adding-packages.html#generic-package-tutorial
 
-# TODO Add config skeleton
-# See:
-# https://github.com/meshtastic/firmware/blob/master/.github/workflows/package_raspbian.yml
-
 MESHTASTICD_VERSION = aa184e6d8b6ef75fbb122f0c00dbfceeb89b4e59
 MESHTASTICD_SITE = https://github.com/meshtastic/firmware
 MESHTASTICD_SITE_METHOD = git
@@ -52,7 +48,6 @@ MESHTASTICD_DEPENDENCIES += \
 # Flags
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS = \
 	-std=c++17 \
-	-lstdc++fs \
 	$(TARGET_NLS_LIBS)
 
 MESHTASTICD_PLATFORMIO_CFLAGS = \
