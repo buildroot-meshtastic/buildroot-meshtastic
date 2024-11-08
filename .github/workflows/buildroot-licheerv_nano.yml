@@ -7,6 +7,14 @@ jobs:
   mksys:
     strategy:
       fail-fast: false
+      matrix:
+        include:
+          - name: "LicheeRV Nano RISC-V"
+            cvi_defconfig: "sg2002_licheervnano_sd"
+            br_defconfig: "cvitek_SG200X_musl_riscv64_defconfig"
+          # - name: "LicheeRV Nano ARM"
+          #   cvi_defconfig: "sg2002_licheea53nano_sd"
+          #   br_defconfig: "cvitek_SG200X_32bit_defconfig"
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
@@ -17,7 +25,7 @@ jobs:
         with:
           max-size: "20G"
           create-symlink: true
-          key: licheerv_${{ runner.os }}
+          key: licheerv_${{ matrix.cvi_defconfig }}
 
       - name: Create Timestamp
         run: |
@@ -49,15 +57,15 @@ jobs:
         with:
           path: |
             cvi_mmf_sdk/buildroot/dl
-          key: br-licheerv_${{ runner.os }}
+          key: br-licheerv_${{ matrix.cvi_defconfig }}
 
       - name: Make System
         shell: bash
         working-directory: ./cvi_mmf_sdk
         run: |
               source build/cvisetup.sh
-              defconfig sg2002_licheervnano_sd
-              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external cvitek_SG200X_musl_riscv64_defconfig BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
+              defconfig ${{ matrix.cvi_defconfig }}
+              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external ${{ matrix.br_defconfig }} BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
               build_all
 
       - name: 'Upload Artifact'
@@ -65,8 +73,8 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: buildroot-meshtastic-licheerv_nano-${{ env.BUILD_ID }}
+          name: "buildroot-meshtastic-${{ matrix.cvi_defconfig }}"
           path: |
-                  cvi_mmf_sdk/install/soc_sg2002_licheervnano_sd/images/*
-                  cvi_mmf_sdk/install/soc_sg2002_licheervnano_sd/*.bin
+                  cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/images/*
+                  cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/*.bin
           if-no-files-found: error

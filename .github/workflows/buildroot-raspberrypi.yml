@@ -19,16 +19,13 @@ jobs:
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
 
-    env:
-      BR2_EXTERNAL: ${{ github.workspace }}/external
-
     steps:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           max-size: "20G"
           create-symlink: true
-          key: ${{ runner.os }}
+          key: rpi_${{ runner.os }}
 
       - name: Create Timestamp
         run: |
@@ -47,6 +44,14 @@ jobs:
         with:
             path: 'external'
 
+      - name: Cache Buildroot
+        id: cache-buildroot
+        uses: actions/cache@v4
+        with:
+          path: |
+            buildroot/dl
+          key: br-rpi_${{ runner.os }}
+
       - name: Make System
         shell: bash
         working-directory: ./buildroot
@@ -60,6 +65,6 @@ jobs:
       #   uses: actions/upload-artifact@v4
       #   with:
       #     retention-days: 30
-      #     name: buildroot-meshtastic-raspberrypi-${{ env.BUILD_ID }}
+      #     name: buildroot-meshtastic-raspberrypi-${{ matrix.defconfig }}
       #     path: |
       #             buildroot/*

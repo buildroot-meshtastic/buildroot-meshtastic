@@ -125,7 +125,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: buildroot-meshtastic-luckfox_pico-${{ env.BUILD_ID }}
+          name: buildroot-meshtastic-luckfox_pico-${{ matrix.name }}
           path: |
                   luckfox_pico_sdk/IMAGE/IPC_*/*
           if-no-files-found: error
