@@ -1,6 +1,7 @@
 config BR2_PACKAGE_PYTHON_MESHTASTIC
 	bool "python-meshtastic"
 	default y
+	select BR2_PACKAGE_PYTHON3 # runtime
 	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
 	select BR2_PACKAGE_PYTHON_PROTOBUF # runtime
 	select BR2_PACKAGE_PYTHON_SERIAL # runtime
