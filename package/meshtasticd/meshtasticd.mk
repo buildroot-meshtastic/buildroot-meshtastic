@@ -5,7 +5,7 @@
 ################################################################################
 # See https://bootlin.com/~thomas/site/buildroot/adding-packages.html#generic-package-tutorial
 
-MESHTASTICD_VERSION = aa184e6d8b6ef75fbb122f0c00dbfceeb89b4e59
+MESHTASTICD_VERSION = v2.5.12.aa184e6
 MESHTASTICD_SITE = https://github.com/meshtastic/firmware
 MESHTASTICD_SITE_METHOD = git
 MESHTASTICD_GIT_SUBMODULES = YES
