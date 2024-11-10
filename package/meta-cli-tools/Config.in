@@ -1,0 +1,21 @@
+# Meta-Package
+config BR2_PACKAGE_META_CLI_TOOLS
+	bool "meta-cli-tools"
+	default y
+	select BR2_PACKAGE_BASH
+	select BR2_PACKAGE_BASH_COMPLETION
+	select BR2_PACKAGE_LOGROTATE
+	select BR2_PACKAGE_GREP
+	select BR2_PACKAGE_SED
+	select BR2_PACKAGE_HTOP
+	select BR2_PACKAGE_NANO
+	select BR2_PACKAGE_LESS
+	select BR2_PACKAGE_WGET
+	select BR2_PACKAGE_ZIP
+	select BR2_PACKAGE_UNZIP
+	help
+	  Meta-Package that selects common CLI tools
+	  These tools are not required for meshtasticd to run,
+	  but are useful for debugging and development.
+
+comment "meta-package that selects common CLI tools"

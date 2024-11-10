@@ -1,3 +1,5 @@
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/meta-cli-tools/Config.in"
+
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/compat-python-pip/Config.in.host"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/compat-python-poetry-core/Config.in.host"
 
