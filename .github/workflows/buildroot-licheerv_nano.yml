@@ -74,7 +74,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: "buildroot-meshtastic-${{ matrix.cvi_defconfig }}"
+          name: "buildroot-meshtastic-${{ matrix.cvi_defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
           path: |
                   cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/images/*
                   cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/*.bin

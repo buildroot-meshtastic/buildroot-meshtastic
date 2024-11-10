@@ -126,7 +126,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: buildroot-meshtastic-${{ matrix.name }}
+          name: "buildroot-meshtastic-${{ matrix.name }}-${{ github.run_number }}.${{ github.run_attempt }}"
           path: |
                   luckfox_pico_sdk/IMAGE/IPC_*/*
           if-no-files-found: error
