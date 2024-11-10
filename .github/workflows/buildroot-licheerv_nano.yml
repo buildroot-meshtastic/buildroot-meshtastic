@@ -11,11 +11,11 @@ jobs:
         include:
           - name: "LicheeRV Nano RISC-V"
             cvi_defconfig: "sg2002_licheervnano_sd"
-            br_defconfig: "cvitek_SG200X_musl_riscv64_defconfig"
+            br_defconfig: "cvitek_SG200X_musl_riscv64"
           # # ARM fails at U-Boot compilation
           # - name: "LicheeRV Nano ARM"
           #   cvi_defconfig: "sg2002_licheea53nano_sd"
-          #   br_defconfig: "cvitek_SG200X_32bit_defconfig"
+          #   br_defconfig: "cvitek_SG200X_32bit"
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
@@ -66,7 +66,7 @@ jobs:
         run: |
               source build/cvisetup.sh
               defconfig ${{ matrix.cvi_defconfig }}
-              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external ${{ matrix.br_defconfig }} BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
+              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external ${{ matrix.br_defconfig }}_defconfig BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
               build_all
 
       - name: 'Upload Artifact'

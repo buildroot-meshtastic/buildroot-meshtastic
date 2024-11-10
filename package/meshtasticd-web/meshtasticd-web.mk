@@ -15,7 +15,7 @@ define MESHTASTICD_WEB_EXTRACT_CMDS
 endef
 
 define MESHTASTICD_WEB_INSTALL_TARGET_CMDS
-    $(INSTALL) -d -m 755 $(TARGET_DIR)/usr/share/doc/meshtasticd/web
+    mkdir -p $(TARGET_DIR)/usr/share/doc/meshtasticd/web
 	cp -a $(@D)/* $(TARGET_DIR)/usr/share/doc/meshtasticd/web
 endef
 
