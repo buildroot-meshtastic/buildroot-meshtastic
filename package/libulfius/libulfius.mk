@@ -24,15 +24,12 @@ LIBULFIUS_CONF_OPTS = \
 	-DINSTALL_HEADER=ON \
 	-DCMAKE_BUILD_TYPE=Release
 LIBULFIUS_DEPENDENCIES = \
-	util-linux \
 	libmicrohttpd \
 	jansson \
-	libcurl \
-	ca-certificates \
 	openssl \
 	gnutls \
-	libwebsockets \
-	zlib \
+	libcurl \
+	zlib libwebsockets \
 	liborcania \
 	libyder
 
