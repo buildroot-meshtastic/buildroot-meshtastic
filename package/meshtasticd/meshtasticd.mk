@@ -74,7 +74,12 @@ endif
 ifeq ($(BR2_PACKAGE_MESHTASTICD_WEB),y)
 MESHTASTICD_DEPENDENCIES += \
 	liborcania \
-	libulfius
+	libulfius \
+	openssl
+MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
+	-lliborcania \
+	-llibulfius \
+	`$(PKG_CONFIG_HOST_BINARY) --libs openssl`
 endif
 
 define MESHTASTICD_BUILD_CMDS
