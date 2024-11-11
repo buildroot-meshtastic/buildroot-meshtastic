@@ -2,8 +2,10 @@ config BR2_PACKAGE_MESHTASTICD_WEB
 	bool "meshtasticd-web"
 	depends on BR2_PACKAGE_MESHTASTICD
 	select BR2_PACKAGE_LIBORCANIA
+	select BR2_PACKAGE_LIBYDER
 	select BR2_PACKAGE_LIBULFIUS
 	select BR2_PACKAGE_OPENSSL
+	select BR2_PACKAGE_LIBOPENSSL
 	default y
 	help
 	  meshtasticd web interface

@@ -74,10 +74,13 @@ endif
 ifeq ($(BR2_PACKAGE_MESHTASTICD_WEB),y)
 MESHTASTICD_DEPENDENCIES += \
 	liborcania \
+	libyder \
 	libulfius \
+	libopenssl \
 	openssl
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
 	-lliborcania \
+	-llibyder \
 	-llibulfius \
 	`$(PKG_CONFIG_HOST_BINARY) --libs openssl`
 endif
@@ -105,7 +108,8 @@ define MESHTASTICD_INSTALL_TARGET_CMDS
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)/etc/meshtasticd/available.d
 	$(INSTALL) -D -m 0644 $(@D)/bin/config-dist.yaml $(TARGET_DIR)/etc/meshtasticd/config.yaml
 	$(INSTALL) -D -m 0644 $(@D)/bin/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
-	$(INSTALL) -D -m 0664 $(MESHTASTICD_PKGDIR)/meshtasticd.logrotate $(TARGET_DIR)/etc/logrotate.d/meshtasticd
+	$(INSTALL) -D -m 0664 $(MESHTASTICD_PKGDIR)/meshtasticd.logrotate \
+		$(TARGET_DIR)/etc/logrotate.d/meshtasticd
 endef
 
 # Service (Daemon) files -- Untested

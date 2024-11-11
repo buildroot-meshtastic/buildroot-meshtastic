@@ -11,7 +11,9 @@ MESHTASTICD_WEB_LICENSE = GPL-3.0
 MESHTASTICD_WEB_EXTRACT_DEPENDENCIES = host-gzip
 MESHTASTICD_WEB_DEPENDENCIES = \
 	liborcania \
+	libyder \
 	libulfius \
+	libopenssl \
 	openssl
 
 define MESHTASTICD_WEB_EXTRACT_CMDS
