@@ -16,7 +16,7 @@ MESHTASTICD_LICENSE_FILES = LICENSE
 MESHTASTICD_DEPENDENCIES = \
 	host-openssl \
 	host-python3 \
-	host-python-click-hack \
+	host-compat-python-click \
 	host-python-semantic-version \
 	host-python-requests \
 	host-python-tabulate \

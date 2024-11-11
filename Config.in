@@ -3,7 +3,7 @@ source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/meta-cli-tools/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/compat-python-pip/Config.in.host"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/compat-python-poetry-core/Config.in.host"
 
-source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-click-hack/Config.in.host"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/compat-python-click/Config.in.host"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-tabulate/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-tabulate/Config.in.host"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-platformio/Config.in.host"

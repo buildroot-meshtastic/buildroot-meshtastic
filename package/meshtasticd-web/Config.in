@@ -9,6 +9,7 @@ config BR2_PACKAGE_MESHTASTICD_WEB
 	select BR2_PACKAGE_LIBULFIUS
 	select BR2_PACKAGE_LIBULFIUS_JANSSON
 	select BR2_PACKAGE_LIBULFIUS_GNUTLS
+	select BR2_PACKAGE_LIBULFIUS_YDER
 	default y
 	help
 	  meshtasticd web interface
