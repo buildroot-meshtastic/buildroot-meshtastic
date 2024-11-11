@@ -1,20 +1,64 @@
 config BR2_PACKAGE_LIBULFIUS
 	bool "libulfius"
-	depends on !BR2_PACKAGE_LIBUWSC # buildroot provides 'libuwsc' which conflicts with `uwsc`
-	select BR2_PACKAGE_JANSSON
-	select BR2_PACKAGE_OPENSSL
-	select BR2_PACKAGE_LIBOPENSSL
-	select BR2_PACKAGE_GNUTLS
-	select BR2_PACKAGE_GNUTLS_OPENSSL
 	select BR2_PACKAGE_LIBMICROHTTPD
-	select BR2_PACKAGE_LIBMICROHTTPD_SSL
-	select BR2_PACKAGE_LIBCURL
-	select BR2_PACKAGE_LIBCURL_GNUTLS
-	select BR2_PACKAGE_ZLIB
-	select BR2_PACKAGE_LIBWEBSOCKETS
 	select BR2_PACKAGE_LIBORCANIA
-	select BR2_PACKAGE_LIBYDER
 	help
 	  Web Framework to build REST APIs in C, using Jansson for JSON
 	  and Libmicrohttpd for the HTTP daemon.
 	  It is designed to be simple to use, fast, and scalable.
+
+if BR2_PACKAGE_LIBULFIUS
+
+config BR2_PACKAGE_LIBULFIUS_JANSSON
+	bool "jansson support"
+	default y
+	select BR2_PACKAGE_JANSSON
+	help
+	  Enable support for Jansson JSON library
+
+config BR2_PACKAGE_LIBULFIUS_CURL
+	bool "libcurl support"
+	default y
+	select BR2_PACKAGE_LIBCURL
+	select BR2_PACKAGE_LIBCURL_GNUTLS if BR2_PACKAGE_GNUTLS
+	help
+	  Enable support for libcurl
+
+config BR2_PACKAGE_LIBULFIUS_GNUTLS
+	bool "gnutls support"
+	default y
+	select BR2_PACKAGE_GNUTLS
+	select BR2_PACKAGE_GNUTLS_OPENSSL if BR2_PACKAGE_OPENSSL
+	select BR2_PACKAGE_LIBMICROHTTPD_SSL
+	help
+	  Enable support for gnutls
+
+config BR2_PACKAGE_LIBULFIUS_WEBSOCKET
+	bool "websockets support"
+	default y
+	select BR2_PACKAGE_ZLIB
+	select BR2_PACKAGE_LIBWEBSOCKETS
+	help
+	  Enable support for libwebsockets
+
+config BR2_PACKAGE_LIBULFIUS_JOURNALD
+	bool "journald support"
+	depends on BR2_PACKAGE_SYSTEMD
+	default y if BR2_PACKAGE_SYSTEMD
+	help
+	  Enable support for journald
+
+config BR2_PACKAGE_LIBULFIUS_YDER
+	bool "yder support"
+	default y
+	select BR2_PACKAGE_LIBYDER
+	help
+	  Enable support for yder
+
+config BR2_PACKAGE_LIBULFIUS_UWSC
+	bool "build uwsc binary"
+	default y
+	help
+	  Build ulfius websocket client binary
+
+endif

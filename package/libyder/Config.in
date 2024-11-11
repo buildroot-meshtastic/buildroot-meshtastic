@@ -5,3 +5,14 @@ config BR2_PACKAGE_LIBYDER
 	  Simple and easy to use logging library.
 	  You can log messages to the console, a file, Syslog,
 	  journald or a callback function.
+
+if BR2_PACKAGE_LIBYDER
+
+config BR2_PACKAGE_LIBYDER_JOURNALD
+	bool "journald support"
+	depends on BR2_PACKAGE_SYSTEMD
+	default y if BR2_PACKAGE_SYSTEMD
+	help
+	  Enable support for journald
+
+endif
