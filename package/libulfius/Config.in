@@ -2,6 +2,7 @@ config BR2_PACKAGE_LIBULFIUS
 	bool "libulfius"
 	depends on !BR2_PACKAGE_LIBUWSC # buildroot provides 'libuwsc' which conflicts with `uwsc`
 	select BR2_PACKAGE_LIBMICROHTTPD
+	select BR2_PACKAGE_LIBMICROHTTPD_SSL
 	select BR2_PACKAGE_JANSSON
 	select BR2_PACKAGE_CA_CERTIFICATES
 	select BR2_PACKAGE_LIBCURL
