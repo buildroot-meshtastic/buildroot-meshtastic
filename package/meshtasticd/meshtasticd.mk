@@ -77,11 +77,10 @@ MESHTASTICD_DEPENDENCIES += \
 	libyder \
 	libulfius \
 	libopenssl \
-	openssl
+	openssl \
+	gnutls
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
-	-lliborcania \
-	-llibyder \
-	-llibulfius \
+	`$(PKG_CONFIG_HOST_BINARY) --libs libulfius` \
 	`$(PKG_CONFIG_HOST_BINARY) --libs openssl`
 endif
 
