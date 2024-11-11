@@ -30,7 +30,6 @@ LIBULFIUS_DEPENDENCIES = \
 	gnutls \
 	libwebsockets \
 	zlib \
-	libuwsc \
 	liborcania \
 	libyder
 
