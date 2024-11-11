@@ -1,0 +1,18 @@
+From: vidplace7 <vidplace7@gmail.com>
+Subject: [PATCH] Fix web path in config-dist.yaml
+
+Change the default web path in config-dist.yaml to /usr/share/meshtasticd/web
+
+Signed-off-by: vidplace7 <vidplace7@gmail.com>
+diff -ruN a/bin/config-dist.yaml b/bin/config-dist.yaml
+--- a/bin/config-dist.yaml
++++ b/bin/config-dist.yaml
+@@ -155,7 +155,7 @@ Logging:
+ 
+ Webserver:
+ #  Port: 443 # Port for Webserver & Webservices
+-#  RootPath: /usr/share/doc/meshtasticd/web # Root Dir of WebServer
++#  RootPath: /usr/share/meshtasticd/web # Root Dir of WebServer
+ 
+ General:
+   MaxNodes: 200

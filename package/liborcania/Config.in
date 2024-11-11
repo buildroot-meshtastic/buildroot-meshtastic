@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LIBORCANIA
+	bool "liborcania"
+	help
+	  A collection of C utility functions and structures.
+	  It is designed to be simple to use, fast, and scalable.
+	  Used by ulfius.

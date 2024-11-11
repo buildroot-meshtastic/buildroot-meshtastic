@@ -1,0 +1,15 @@
+config BR2_PACKAGE_LIBULFIUS
+	bool "libulfius"
+	select BR2_PACKAGE_LIBMICROHTTPD
+	select BR2_PACKAGE_JANSSON
+	select BR2_PACKAGE_LIBCURL
+	select BR2_PACKAGE_GNUTLS
+	select BR2_PACKAGE_LIBWEBSOCKETS
+	select BR2_PACKAGE_ZLIB
+	select BR2_PACKAGE_LIBUWSC
+	select BR2_PACKAGE_LIBORCANIA
+	select BR2_PACKAGE_LIBYDER
+	help
+	  Web Framework to build REST APIs in C, using Jansson for JSON
+	  and Libmicrohttpd for the HTTP daemon.
+	  It is designed to be simple to use, fast, and scalable.

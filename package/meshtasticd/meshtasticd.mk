@@ -39,6 +39,7 @@ endif
 # meshtasticd deps
 MESHTASTICD_DEPENDENCIES += \
 	host-python-platformio \
+	host-pkgconf \
 	$(TARGET_NLS_DEPENDENCIES) \
 	libgpiod \
 	yaml-cpp \
@@ -67,6 +68,13 @@ MESHTASTICD_PLATFORMIO_LDFLAGS = \
 ifeq ($(BR2_PACKAGE_ARGP_STANDALONE),y)
 MESHTASTICD_DEPENDENCIES += argp-standalone
 MESHTASTICD_PLATFORMIO_BUILD_FLAGS += -largp
+endif
+
+# For web interface (optional)
+ifeq ($(BR2_PACKAGE_MESHTASTICD_WEB),y)
+MESHTASTICD_DEPENDENCIES += \
+	liborcania \
+	libulfius
 endif
 
 define MESHTASTICD_BUILD_CMDS

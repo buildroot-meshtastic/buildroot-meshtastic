@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBYDER
+	bool "libyder"
+	select BR2_PACKAGE_LIBORCANIA
+	help
+	  Simple and easy to use logging library.
+	  You can log messages to the console, a file, Syslog,
+	  journald or a callback function.

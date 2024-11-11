@@ -1,6 +1,7 @@
 config BR2_PACKAGE_MESHTASTICD_WEB
 	bool "meshtasticd-web"
 	depends on BR2_PACKAGE_MESHTASTICD
+	select BR2_PACKAGE_LIBULFIUS
 	default y
 	help
 	  meshtasticd web interface
