@@ -15,13 +15,13 @@ jobs:
           - name: "RV1103_Luckfox_Pico_Mini_A"
             lunch_board: "1"
             lunch_boot_medium: "0"  # SD Card
-          # - name: "RV1103_Luckfox_Pico_Mini_B"
-          #   lunch_board: "2"
-          #   lunch_boot_medium: "1"  # eMMC
-          #   # include/wind.h is missing for Pico Plus?
-          # - name: "RV1103_Luckfox_Pico_Plus"
-          #   lunch_board: "3"
-          #   lunch_boot_medium: "0"  # SD Card
+          - name: "RV1103_Luckfox_Pico_Mini_B"
+            lunch_board: "2"
+            lunch_boot_medium: "1"  # eMMC
+            # include/wind.h is missing for Pico Plus?
+          - name: "RV1103_Luckfox_Pico_Plus"
+            lunch_board: "3"
+            lunch_boot_medium: "0"  # SD Card
           - name: "RV1106_Luckfox_Pico_Pro"
             lunch_board: "4"
             lunch_boot_medium: "0"  # SD Card
@@ -56,7 +56,7 @@ jobs:
         with:
             repository: 'buildroot-meshtastic/luckfox-pico'
             path: 'luckfox_pico_sdk'
-            ref: 'luckfox'  # markbirss branch
+            ref: 'vid_testing'  # vidplace7 branch
 
       - name: Checkout this Repo to 'external'
         uses: actions/checkout@v4
