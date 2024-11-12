@@ -8,8 +8,14 @@
 NAME=meshtasticd
 DAEMON=/usr/sbin/$NAME
 PIDFILE=/var/run/$NAME.pid
+USERNAME=root
+# Meshtasticd needs HOME to be set or it will use `/`
+HOME=/$USERNAME
 
 MESHTATICD_ARGS=""
+
+# Read configuration variable file if it is present
+[ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
 start() {
 	printf "Starting $NAME: "
@@ -18,7 +24,8 @@ start() {
 	# (after "--", including meshtasticd) and forwards stdout/stderr
 	# to syslog.
 	# shellcheck disable=SC2086 # we need word splitting for MESHTASTICD_ARGS
-	start-stop-daemon --start --background --pidfile "$PIDFILE" \
+	start-stop-daemon --chuid $USERNAME --start --background \
+		--pidfile "$PIDFILE" \
 		--exec /usr/libexec/meshtasticd-syslog-wrapper.sh \
 		-- "$DAEMON" $MESHTATICD_ARGS
 	status=$?
