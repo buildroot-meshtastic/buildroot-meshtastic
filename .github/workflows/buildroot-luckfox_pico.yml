@@ -126,7 +126,10 @@ jobs:
         shell: bash
         working-directory: ./luckfox_pico_sdk
         run: |
+              echo "Building Images"
               ./build.sh
+              echo "Building Factory Image"
+              ./build.sh factory
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
@@ -135,5 +138,6 @@ jobs:
           compression-level: 9
           name: "buildroot-meshtastic-${{ matrix.name }}-${{ github.run_number }}.${{ github.run_attempt }}"
           path: |
-                  luckfox_pico_sdk/IMAGE/IPC_*/*
+                  luckfox_pico_sdk/IMAGE/IPC_*/**
+                  luckfox_pico_sdk/output/image/**
           if-no-files-found: error
