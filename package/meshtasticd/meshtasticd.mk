@@ -107,14 +107,14 @@ define MESHTASTICD_INSTALL_TARGET_CMDS
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)/etc/meshtasticd/available.d
 	$(INSTALL) -D -m 0644 $(@D)/bin/config-dist.yaml $(TARGET_DIR)/etc/meshtasticd/config.yaml
 	$(INSTALL) -D -m 0644 $(@D)/bin/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
-	$(INSTALL) -D -m 0664 $(MESHTASTICD_PKGDIR)/meshtasticd.logrotate \
-		$(TARGET_DIR)/etc/logrotate.d/meshtasticd
 endef
 
 # Service (Daemon) files -- Untested
 define MESHTASTICD_INSTALL_INIT_SYSV
 	$(INSTALL) -D -m 0755 $(MESHTASTICD_PKGDIR)/S99meshtasticd \
 		$(TARGET_DIR)/etc/init.d/S99meshtasticd
+	$(INSTALL) -D -m 755 $(MESHTASTICD_PKGDIR)/meshtasticd-syslog-wrapper.sh \
+		$(TARGET_DIR)/usr/libexec/meshtasticd-syslog-wrapper.sh
 endef
 
 define MESHTASTICD_INSTALL_INIT_SYSTEMD
