@@ -8,4 +8,4 @@ config BR2_PACKAGE_HOST_COMPAT_PYTHON_PIP
 
 	  https://pip.pypa.io/
 
-comment "`python-poetry-core` backported for Buildroot versions older than 2023.05"
+comment "`python-pip` host package backported for Buildroot versions older than 2023.05"

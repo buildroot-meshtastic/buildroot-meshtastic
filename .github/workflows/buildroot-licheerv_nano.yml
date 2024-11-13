@@ -12,6 +12,7 @@ jobs:
           - name: "LicheeRV Nano RISC-V"
             cvi_defconfig: "sg2002_licheervnano_sd"
             br_defconfig: "cvitek_SG200X_musl_riscv64"
+
           # # ARM fails at U-Boot compilation
           # - name: "LicheeRV Nano ARM"
           #   cvi_defconfig: "sg2002_licheea53nano_sd"
@@ -24,14 +25,9 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
-          max-size: "20G"
+          max-size: "1G"
           create-symlink: true
           key: licheerv_${{ matrix.cvi_defconfig }}
-
-      - name: Create Timestamp
-        run: |
-              echo "BUILD_ID=$(date +%Y%m%d_%H%M%S)" >> $GITHUB_ENV
-              echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
 
       - name: Checkout LicheeRV-Nano-Build Repo
         uses: actions/checkout@v4
@@ -52,14 +48,6 @@ jobs:
         with:
             path: 'external'
 
-      # - name: Cache Buildroot
-      #   id: cache-buildroot
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       cvi_mmf_sdk/buildroot/dl
-      #     key: br-licheerv_${{ matrix.cvi_defconfig }}
-
       - name: Make System
         shell: bash
         working-directory: ./cvi_mmf_sdk
@@ -76,6 +64,5 @@ jobs:
           compression-level: 9
           name: "buildroot-meshtastic-${{ matrix.cvi_defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
           path: |
-                  cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/images/*
-                  cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/*.bin
+                  cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/images/**
           if-no-files-found: error

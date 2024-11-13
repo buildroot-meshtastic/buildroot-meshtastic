@@ -46,6 +46,7 @@ Prebuilt images are provided in the `Actions` tab.
 | ------------------- | -------------------------------------------- |
 | `meta-cli-tools`    | Meta-Package for installing common CLI tools |
 | `meshtasticd`       | Meshtastic 'native-linux' daemon             |
+| `meshtasticd-web`   | `meshtasticd` web server                     |
 | `python-meshtastic` | Meshtastic python library (untested/revisit) |
 
 ## Dependencies

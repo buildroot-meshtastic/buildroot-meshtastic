@@ -49,14 +49,9 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
-          max-size: "20G"
+          max-size: "1G"
           create-symlink: true
           key: ${{ matrix.name }}
-
-      - name: Create Timestamp
-        run: |
-              echo "BUILD_ID=$(date +%Y%m%d_%H%M%S)" >> $GITHUB_ENV
-              echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
 
       - name: Checkout luckfox-pico Repo
         uses: actions/checkout@v4
@@ -114,14 +109,6 @@ jobs:
               send "E"
               expect eof
 
-      # - name: Cache Buildroot
-      #   id: cache-buildroot
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       luckfox_pico_sdk/sysdrv/source/buildroot/buildroot-*/dl
-      #     key: br-${{ matrix.name }}
-
       - name: Make System
         shell: bash
         working-directory: ./luckfox_pico_sdk
@@ -137,7 +124,7 @@ jobs:
               cp $GITHUB_WORKSPACE/external/build/bin/blkenvflash ./blkenvflash
               chmod +x ./blkenvflash
               echo "Packaging combined image"
-              ./blkenvflash ${{ matrix.name }}-${{ github.run_number }}.${{ github.run_attempt }}.img
+              ./blkenvflash buildroot-meshtastic-${{ matrix.name }}-${{ github.run_number }}.${{ github.run_attempt }}.img
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
