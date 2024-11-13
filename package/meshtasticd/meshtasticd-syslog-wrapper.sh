@@ -6,6 +6,6 @@
   CMD_PID=$!
   echo $CMD_PID > "/var/run/$(basename "${1}").pid"  # Save the PID
   wait $CMD_PID  # Wait for the command to complete
-} 2>&1 | sed 's/\r$//' | while read -r LINE; do
+} 2>&1 | while read -r LINE; do
     logger -t "$(basename "${1}")" "$LINE"
 done
