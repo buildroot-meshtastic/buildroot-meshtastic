@@ -135,3 +135,4 @@ jobs:
           path: |
                   luckfox_pico_sdk/output/image/**
           if-no-files-found: error
+          include-hidden-files: true
