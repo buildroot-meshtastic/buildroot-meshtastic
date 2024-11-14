@@ -5,7 +5,7 @@
 ################################################################################
 # See https://bootlin.com/~thomas/site/buildroot/adding-packages.html#generic-package-tutorial
 
-MESHTASTICD_VERSION = v2.5.12.aa184e6
+MESHTASTICD_VERSION = v2.5.13.295278b
 MESHTASTICD_SITE = https://github.com/meshtastic/firmware
 MESHTASTICD_SITE_METHOD = git
 MESHTASTICD_GIT_SUBMODULES = YES
@@ -107,6 +107,7 @@ define MESHTASTICD_INSTALL_TARGET_CMDS
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)/etc/meshtasticd/available.d
 	$(INSTALL) -D -m 0644 $(@D)/bin/config-dist.yaml $(TARGET_DIR)/etc/meshtasticd/config.yaml
 	$(INSTALL) -D -m 0644 $(@D)/bin/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
+	$(INSTALL) -D -m 0644 $(MESHTASTICD_PKGDIR)/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
 endef
 
 # Service (Daemon) files -- Untested
