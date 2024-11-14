@@ -48,23 +48,30 @@ Prebuilt images are provided in the `Actions` tab.
 | `meshtasticd`           | Meshtastic 'native-linux' daemon             |
 | `meshtasticd-web`       | `meshtasticd` web server                     |
 | `python-meshtastic`     | Meshtastic python library (untested/revisit) |
+| `python-meshing-around` | BBS / Bot for meshtastic                     |
 
 ## Dependencies
 
-| Package                    | Description                      |
-| -------------------------- | -------------------------------- |
-| `host-compat-python-pip`   | host-dep for multiple packages   |
-| `host-compat-poetry-core`  | host-dep for multiple packages   |
-| `host-compat-python-click` | dep for `host-python-platformio` |
-| `host-python-tabulate`     | dep for `host-python-platformio` |
-| `host-python-platformio`   | host-dep for `meshtasticd`       |
-| `liborcania`               | dep for `meshtasticd-web`        |
-| `libyder`                  | dep for `meshtasticd-web`        |
-| `libulfius`                | dep for `meshtasticd-web`        |
-| `python-dotmap`            | dep for `python-meshtastic`      |
-| `python-tabulate`          | dep for `python-meshtastic`      |
-| `python-pypubsub`          | dep for `python-meshtastic`      |
-| `python-print-color`       | dep for `python-meshtastic`      |
+| Package                     | Description                         |
+| --------------------------- | ----------------------------------- |
+| `host-compat-python-pip`    | host-dep for multiple packages      |
+| `host-compat-poetry-core`   | host-dep for multiple packages      |
+| `host-compat-python-click`  | dep for `host-python-platformio`    |
+| `host-python-tabulate`      | dep for `host-python-platformio`    |
+| `host-python-platformio`    | host-dep for `meshtasticd`          |
+| `liborcania`                | dep for `meshtasticd-web`           |
+| `libyder`                   | dep for `meshtasticd-web`           |
+| `libulfius`                 | dep for `meshtasticd-web`           |
+| `python-dotmap`             | dep for `python-meshtastic`         |
+| `python-tabulate`           | dep for `python-meshtastic`         |
+| `python-pypubsub`           | dep for `python-meshtastic`         |
+| `python-print-color`        | dep for `python-meshtastic`         |
+| `python-geographiclib`      | dep for `python-geopy`              |
+| `python-geopy`              | dep for `python-meshing-around`     |
+| `python-ephem`              | dep for `python-meshing-around`     |
+| `python-maidenhead`         | dep for `python-meshing-around`     |
+| `python-openmeteo-sdk`      | dep for `python-openmeteo-requests` |
+| `python-openmeteo-requests` | dep for `python-meshing-around`     |
 
 ### Vendor-specific Dependencies
 

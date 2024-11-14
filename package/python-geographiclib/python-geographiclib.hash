@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/geographiclib/json
+md5  bfdd8a1081acda1ecec6c0140704768f  geographiclib-2.0.tar.gz
+sha256  f7f41c85dc3e1c2d3d935ec86660dc3b2c848c83e17f9a9e51ba9d5146a15859  geographiclib-2.0.tar.gz
+# Locally computed sha256 checksums
+sha256  cf5eba0929dfb36bb05982d81cf2cc24029fde35c670bf3b82db3c902ef8f367  LICENSE

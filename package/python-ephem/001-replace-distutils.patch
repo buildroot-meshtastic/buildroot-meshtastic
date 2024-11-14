@@ -1,0 +1,18 @@
+From: vidplace7 <vidplace7@gmail.com>
+Subject: [PATCH] Replace distutils with setuptools in setup.py
+
+Replaces distutils with setuptools in setup.py.
+We do not need Python 2 compatibility.
+
+Signed-off-by: vidplace7 <vidplace7@gmail.com>
+diff -ruN a/setup.py b/setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -1,6 +1,6 @@
+ import os
+ import sys
+-from distutils.core import setup, Extension
++from setuptools import setup, Extension
+ from glob import glob
+ 
+ # Work-around.

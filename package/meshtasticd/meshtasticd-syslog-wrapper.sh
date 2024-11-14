@@ -1,6 +1,8 @@
 #!/bin/sh
 # Inspired by:
 # https://github.com/buildroot/buildroot/blob/master/package/docker-engine/dockerd-syslog-wrapper.sh
+
+# Change the working directory or initd will start in '/'
 cd /root
 {
   "${@}" &

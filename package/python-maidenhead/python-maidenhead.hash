@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/maidenhead/json
+md5  648fbcad89f4e38a1fe515412373d41a  maidenhead-1.7.0.tar.gz
+sha256  36415dce8f630927e59232c88d08135218d3281950b3d3eb5d7caa04a7623f74  maidenhead-1.7.0.tar.gz
+# Locally computed sha256 checksums
+sha256  364a4ede89e5c6564399ccc85c715d56ed7ba9b2b47241cc9c68ec35651fb0c7  LICENSE.txt

@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_OPENMETEO_REQUESTS
+	bool "python-openmeteo-requests"
+	select BR2_PACKAGE_PYTHON_OPENMETEO_SDK
+	help
+	  An API client to get weather data from the Open-Meteo Weather API
+	  based on the Python library requests.
+
+	  https://pypi.org/project/openmeteo-requests

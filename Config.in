@@ -18,4 +18,12 @@ source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-pypubsub/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-print-color/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-meshtastic/Config.in"
 
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-geographiclib/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-geopy/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-ephem/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-maidenhead/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-openmeteo-sdk/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-openmeteo-requests/Config.in"
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-meshing-around/Config.in"
+
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/cvi-pinmux/Config.in"

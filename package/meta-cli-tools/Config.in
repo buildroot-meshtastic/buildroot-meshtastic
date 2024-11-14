@@ -2,6 +2,7 @@
 config BR2_PACKAGE_META_CLI_TOOLS
 	bool "meta-cli-tools"
 	default y
+	select BR2_PACKAGE_UTIL_LINUX
 	select BR2_PACKAGE_UTIL_LINUX_BINARIES
 	select BR2_PACKAGE_BASH
 	select BR2_PACKAGE_BASH_COMPLETION

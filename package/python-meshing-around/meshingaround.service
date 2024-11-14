@@ -1,0 +1,23 @@
+# Adapted from https://github.com/SpudGunMan/meshing-around/blob/main/etc/mesh_bot.tmp
+
+[Unit]
+Description=meshing-around_bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/meshingaround/
+ExecStart=/usr/bin/python3 mesh_bot.py
+ExecStop=pkill -f mesh_bot.py
+
+# Disable Python's buffering of STDOUT and STDERR, so that output from the
+# service shows up immediately in systemd's logs
+Environment=PYTHONUNBUFFERED=1
+
+Restart=on-failure
+Type=notify #try simple if any problems
+
+[Install]
+WantedBy=default.target

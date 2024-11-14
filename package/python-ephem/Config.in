@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_EPHEM
+	bool "python-ephem"
+	help
+	  Package for performing high-precision astronomy computations.
+
+	  https://pypi.org/project/ephem

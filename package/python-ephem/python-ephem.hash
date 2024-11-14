@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/ephem/json
+md5  da21e69133e6ff8f15604738ff4a9d54  ephem-4.1.6.tar.gz
+sha256  0ed2e4ea76f9db3eede2204adab8af3f1708201c7c04ee8511e710a54ca6425f  ephem-4.1.6.tar.gz
+# Locally computed sha256 checksums
+sha256  69ef21cf7e3d09ae2ee96d670b6ac89ebd2707b0478b7f0eb3b68d23cd1a8fd9  LICENSE

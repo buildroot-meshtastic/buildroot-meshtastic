@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_GEOPY
+	bool "python-geopy"
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	select BR2_PACKAGE_PYTHON_GEOGRAPHICLIB
+	help
+	  A Python client for several popular geocoding web services
+
+	  https://pypi.org/project/geopy

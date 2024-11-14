@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_MAIDENHEAD
+	bool "python-maidenhead"
+	help
+	  Provides a simple, yet effective location hashing algorithm
+
+	  https://pypi.org/project/maidenhead

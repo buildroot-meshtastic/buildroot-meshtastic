@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/geopy/json
+md5  bf770e94c179ceffdb63df7a6ed67fe8  geopy-2.4.1.tar.gz
+sha256  50283d8e7ad07d89be5cb027338c6365a32044df3ae2556ad3f52f4840b3d0d1  geopy-2.4.1.tar.gz
+# Locally computed sha256 checksums
+sha256  f09cbf1aec22dfc3d457594b619d0484a12498e9481bc126fb16dff6bf5aec16  LICENSE

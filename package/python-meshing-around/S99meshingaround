@@ -1,0 +1,41 @@
+#!/bin/sh
+
+NAME=meshingaround
+DAEMON=/usr/bin/python3
+DAEMON_ARGS="mesh_bot.py"
+WORKDIR=/opt/meshingaround
+PIDFILE=/var/run/$NAME.pid
+
+start() {
+    printf "Starting $NAME: "
+    cd $WORKDIR
+    start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile \
+        --chuid root --exec $DAEMON -- $DAEMON_ARGS && echo "OK" || echo "Failed"
+}
+stop() {
+	printf "Stopping $NAME: "
+	start-stop-daemon -K -q -p $PIDFILE && echo "OK" || echo "Failed"
+	rm -f $PIDFILE
+}
+restart() {
+	stop
+	sleep 1
+	start
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart|reload)
+		restart
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+esac
+
+exit $?

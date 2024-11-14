@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_OPENMETEO_SDK
+	bool "python-openmeteo-sdk"
+	select BR2_PACKAGE_PYTHON_FLATBUFFERS
+	help
+	  Open-Meteo SDK Schema Files
+
+	  https://pypi.org/project/openmeteo-sdk

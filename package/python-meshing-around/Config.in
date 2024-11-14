@@ -1,0 +1,22 @@
+# requirements that still need to be packaged:
+# retry_requests
+# dadjokes
+# wikipedia
+
+config BR2_PACKAGE_PYTHON_MESHING_AROUND
+	bool "python-meshing-around"
+	# default y
+	select BR2_PACKAGE_PYTHON_MESHTASTIC
+	select BR2_PACKAGE_PYTHON_PYPUBSUB
+	select BR2_PACKAGE_PYTHON_REQUESTS
+	select BR2_PACKAGE_PYTHON_BEAUTIFULSOUP4
+	select BR2_PACKAGE_PYTHON_SCHEDULE
+	select BR2_PACKAGE_PYTHON_GEOPY
+	select BR2_PACKAGE_PYTHON_EPHEM # solar module
+	select BR2_PACKAGE_PYTHON_MAIDENHEAD
+	select BR2_PACKAGE_PYTHON_OPENMETEO_REQUESTS
+	# select BR2_PACKAGE_PYTHON_NUMPY if BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS # wx_meteo module
+	help
+	  Mesh Bot for Network Testing and BBS Activities
+
+	  https://github.com/SpudGunMan/meshing-around
