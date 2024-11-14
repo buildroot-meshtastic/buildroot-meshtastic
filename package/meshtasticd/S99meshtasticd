@@ -8,9 +8,8 @@
 NAME=meshtasticd
 DAEMON=/usr/sbin/$NAME
 PIDFILE=/var/run/$NAME.pid
-USERNAME=root
 # Meshtasticd needs HOME to be set or it will use `/`
-HOME=/$USERNAME
+export HOME="/root"
 
 MESHTATICD_ARGS=""
 
@@ -24,7 +23,7 @@ start() {
 	# (after "--", including meshtasticd) and forwards stdout/stderr
 	# to syslog.
 	# shellcheck disable=SC2086 # we need word splitting for MESHTASTICD_ARGS
-	start-stop-daemon --chuid $USERNAME --start --background \
+	start-stop-daemon --chuid root --start --background \
 		--pidfile "$PIDFILE" \
 		--exec /usr/libexec/meshtasticd-syslog-wrapper.sh \
 		-- "$DAEMON" $MESHTATICD_ARGS

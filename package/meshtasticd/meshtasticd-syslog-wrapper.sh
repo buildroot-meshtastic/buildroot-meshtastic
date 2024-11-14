@@ -1,6 +1,7 @@
 #!/bin/sh
 # Inspired by:
 # https://github.com/buildroot/buildroot/blob/master/package/docker-engine/dockerd-syslog-wrapper.sh
+cd /root
 {
   "${@}" &
   CMD_PID=$!

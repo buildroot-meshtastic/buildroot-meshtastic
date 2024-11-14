@@ -7,6 +7,7 @@ StartLimitBurst=5
 [Service]
 User=root
 Group=root
+WorkingDirectory=/root
 Type=simple
 ExecStart=/usr/sbin/meshtasticd
 Restart=always
