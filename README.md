@@ -3,12 +3,14 @@
 [Buildroot](https://buildroot.org/) packaging for Meshtastic and dependencies.
 
 Intended for use with embedded Linux devices:
+- [LuckFox Pico Series](https://wiki.luckfox.com/luckfox-pico/luckfox-pico-quick-start/)
+    - Compilation working with [uClibc-ng](https://uclibc-ng.org/)
 - [Sipeed LicheeRV Nano](https://wiki.sipeed.com/hardware/en/lichee/RV_Nano/1_intro.html)
     - Primary testing target currently, working!
     - Compilation working with [musl](https://musl.libc.org/)
-- [LuckFox Pico](https://wiki.luckfox.com/luckfox-pico/luckfox-pico-quick-start/)
+- [Milk-V Duo Series](https://milkv.io/docs/duo/overview)
     - Untested
-    - Compilation working with [uClibc-ng](https://uclibc-ng.org/)
+    - Compilation working with [musl](https://musl.libc.org/)
 - [Raspberry Pi Zero series](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#zero-series)
     - Untested
     - Compilation working with [glibc](https://sourceware.org/glibc/)
@@ -75,9 +77,9 @@ Prebuilt images are provided in the `Actions` tab.
 
 ### Vendor-specific Dependencies
 
-| Package      | Description                                                    |
-| ------------ | -------------------------------------------------------------- |
-| `cvi-pinmux` | Used for mapping pins on CVI platforms (LicheeRV / Milk-V Duo) |
+| Package             | Description                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| `lichee-cvi-pinmux` | Used for mapping pins on LicheeRV Nano, already included on Milk-V Duo. |
 
 ---
 

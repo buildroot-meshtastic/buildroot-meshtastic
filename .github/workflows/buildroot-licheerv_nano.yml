@@ -57,7 +57,7 @@ jobs:
               make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external ${{ matrix.br_defconfig }}_defconfig BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
               build_all
 
-      - name: 'Upload Artifact'
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           retention-days: 30

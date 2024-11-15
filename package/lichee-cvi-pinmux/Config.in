@@ -1,0 +1,27 @@
+config BR2_PACKAGE_LICHEE_CVI_PINMUX
+	bool "cvi-pinmux (licheerv_nano)"
+	depends on !BR2_PACKAGE_CVI_PINMUX
+	help
+	  CVI Pin Multiplexing.
+	  Ported from milkv-duo repo for licheerv_nano.
+	  Do not select on the milkv-duo platform.
+
+if BR2_PACKAGE_LICHEE_CVI_PINMUX
+
+choice
+	prompt "Cvi pin multiplexing"
+	default BR2_PACKAGE_LICHEE_CVI_PINMUX_SG200X
+
+config BR2_PACKAGE_LICHEE_CVI_PINMUX_CV180X
+	bool "CV180X"
+	help
+	  pinmux for cv180x.
+
+config BR2_PACKAGE_LICHEE_CVI_PINMUX_SG200X
+	bool "SG200X"
+	help
+	  pinmux for sg200x.
+
+endchoice
+
+endif

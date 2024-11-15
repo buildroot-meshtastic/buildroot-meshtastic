@@ -1,0 +1,80 @@
+name: "br-meshtastic: milkv_duo"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "Milk-V Duo (RISC-V)"
+            defconfig: "milkv-duo-musl-riscv64-sd"
+
+          - name: "Milk-V Duo 256M (ARM)"
+            defconfig: "milkv-duo256m-glibc-arm64-sd"
+
+          - name: "Milk-V Duo 256M (RISC-V)"
+            defconfig: "milkv-duo256m-musl-riscv64-sd"
+
+          # - name: "Milk-V Duo S (ARM) EMMC"
+          #   defconfig: "milkv-duos-glibc-arm64-emmc"
+
+          - name: "Milk-V Duo S (ARM) SD"
+            defconfig: "milkv-duos-glibc-arm64-sd"
+
+          - name: "Milk-V Duo S (RISC-V) EMMC"
+            defconfig: "milkv-duos-musl-riscv64-emmc"
+
+          - name: "Milk-V Duo S (RISC-V) SD"
+            defconfig: "milkv-duos-musl-riscv64-sd"
+
+    runs-on: [ self-hosted, linux ]
+    container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
+
+    steps:
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          max-size: "1G"
+          create-symlink: true
+          key: milkv_duo_${{ matrix.defconfig }}
+
+      - name: Checkout duo-buildroot-sdk-v2 Repo
+        uses: actions/checkout@v4
+        with:
+            repository: 'buildroot-meshtastic/duo-buildroot-sdk-v2'
+            path: 'duo_sdk'
+            ref: 'vid_testing'  # vidplace7 branch
+
+      - name: Checkout milkv-duo host-tools
+        uses: actions/checkout@v4
+        with:
+            repository: 'buildroot-meshtastic/milkv-duo-host-tools'
+            path: 'duo_sdk/host-tools'
+            ref: 'meshtastic'
+
+      - name: Checkout this Repo to 'external'
+        uses: actions/checkout@v4
+        with:
+            path: 'external'
+
+      - name: Make System
+        shell: bash
+        working-directory: ./duo_sdk
+        env:
+          BR2_EXTERNAL: ${{ github.workspace }}/external
+        run: |
+              echo "Building Images"
+              ./build.sh ${{ matrix.defconfig }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 30
+          compression-level: 9
+          name: "buildroot-meshtastic-${{ matrix.defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
+          path: |
+                  duo_sdk/out/**
+          if-no-files-found: error
