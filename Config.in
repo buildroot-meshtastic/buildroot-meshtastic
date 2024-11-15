@@ -26,4 +26,6 @@ source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-openmeteo-sdk/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-openmeteo-requests/Config.in"
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-meshing-around/Config.in"
 
+source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/python-meshtastic-channel-link/Config.in"
+
 source "$BR2_EXTERNAL_MESHTASTIC_PATH/package/lichee-cvi-pinmux/Config.in"

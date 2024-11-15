@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PYTHON_MESHTASTIC_CHANNEL_LINK
+	bool "python-meshtastic-channel-link"
+	# default y
+	select BR2_PACKAGE_PYTHON_MESHTASTIC
+	select BR2_PACKAGE_PYTHON_PAHO_MQTT
+	select BR2_PACKAGE_PYTHON_CRYPTOGRAPHY
+	help
+	  A Python script using MQTT to bridge Meshtastic
+	  networks using different modem settings.
+
+	  https://github.com/pdxlocations/ChannelLink-for-Meshtastic
