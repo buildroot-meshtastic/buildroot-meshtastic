@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "forkProcessing": "enabled",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update _VERSION variables in Buildroot .mk files with inline comments for datasource, depName, and versioning",
+      "fileMatch": ["(^|\/)package\/.+?\\.mk$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:[A-Z_]+?)_VERSION = (?<currentValue>.+?)\\s"
+      ]
+    }
+  ],
+  "packageRules": [
+  ]
+}

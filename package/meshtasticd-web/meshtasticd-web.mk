@@ -4,6 +4,7 @@
 #
 ################################################################################
 
+# renovate: datasource=github-releases packageName=meshtastic/web versioning=semver
 MESHTASTICD_WEB_VERSION = 2.5.4
 MESHTASTICD_WEB_SOURCE = build.tar
 MESHTASTICD_WEB_SITE = https://github.com/meshtastic/web/releases/download/v$(MESHTASTICD_WEB_VERSION)
