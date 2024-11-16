@@ -46,7 +46,8 @@ jobs:
         with:
             repository: 'buildroot-meshtastic/duo-buildroot-sdk-v2'
             path: 'duo_sdk'
-            ref: 'vid_testing'  # vidplace7 branch
+            #ref: 'vid_testing'  # vidplace7 branch
+            ref: 'milkv_duo'  # mark birss branch
 
       - name: Checkout milkv-duo host-tools
         uses: actions/checkout@v4
