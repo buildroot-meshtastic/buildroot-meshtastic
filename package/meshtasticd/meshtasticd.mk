@@ -5,6 +5,7 @@
 ################################################################################
 # See https://bootlin.com/~thomas/site/buildroot/adding-packages.html#generic-package-tutorial
 
+# renovate: datasource=github-releases depName=meshtasticd packageName=meshtastic/firmware versioning=semver-coerced
 MESHTASTICD_VERSION = v2.5.13.295278b
 MESHTASTICD_SITE = https://github.com/meshtastic/firmware
 MESHTASTICD_SITE_METHOD = git

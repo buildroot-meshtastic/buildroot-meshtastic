@@ -4,6 +4,7 @@
 #
 ################################################################################
 
+# renovate: datasource=pypi depName=python-meshtastic packageName=meshtastic versioning=semver
 PYTHON_MESHTASTIC_VERSION = 2.5.4
 PYTHON_MESHTASTIC_SOURCE = meshtastic-$(PYTHON_MESHTASTIC_VERSION).tar.gz
 PYTHON_MESHTASTIC_SITE = https://files.pythonhosted.org/packages/39/61/f050abaedd206b942e04362d84a5b73a3e8da04454548a0d3c060da4c027
