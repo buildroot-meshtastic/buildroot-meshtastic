@@ -5,7 +5,7 @@
 ################################################################################
 
 # renovate: datasource=github-releases depName=python-meshtastic-channel-link packageName=pdxlocations/ChannelLink-for-Meshtastic versioning=semver
-PYTHON_MESHTASTIC_CHANNEL_LINK_VERSION = 1.0.0
+PYTHON_MESHTASTIC_CHANNEL_LINK_VERSION = 1.0.1
 PYTHON_MESHTASTIC_CHANNEL_LINK_SITE = $(call github,pdxlocations,ChannelLink-for-Meshtastic,v$(PYTHON_MESHTASTIC_CHANNEL_LINK_VERSION))
 PYTHON_MESHTASTIC_CHANNEL_LINK_LICENSE = GPL-3.0
 PYTHON_MESHTASTIC_CHANNEL_LINK_LICENSE_FILES = LICENSE
