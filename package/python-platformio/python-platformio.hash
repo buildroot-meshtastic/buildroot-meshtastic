@@ -1,5 +1,0 @@
-# md5, sha256 from https://pypi.org/pypi/platformio/json
-md5  8d15b51e66b43ff8684829114e6ce13a  platformio-6.1.16.tar.gz
-sha256  79387b45ca7df9c0c51cae82b3b0a40ba78d11d87cea385db47e1033d781e959  platformio-6.1.16.tar.gz
-# Locally computed sha256 checksums
-sha256  aa53ae6e1f414b3f3041b66b7394ac86f740cb86cfb096ad89495ab74efcfd05  LICENSE
