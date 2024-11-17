@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_MESHTASTIC_TC2_BBS
+	bool "python-meshtastic-tc2-bbs"
+	select BR2_PACKAGE_PYTHON_MESHTASTIC
+	select BR2_PACKAGE_PYTHON_PYPUBSUB
+	help
+	  The TC²-BBS system integrated with Meshtastic devices.
+	  This system allows for message handling, bulletin boards,
+	  mail systems, and a channel directory.
+
+	  https://github.com/TheCommsChannel/TC2-BBS-mesh
