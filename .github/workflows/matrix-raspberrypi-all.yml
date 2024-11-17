@@ -1,0 +1,24 @@
+name: "build_all: raspberrypi"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "RPi Zero"
+            defconfig: "raspberrypi0"
+
+          - name: "RPi Zero W"
+            defconfig: "raspberrypi0w"
+
+          - name: "RPi Zero 2 W"
+            defconfig: "raspberrypizero2w"
+
+    uses: ./.github/workflows/build-raspberrypi.yml
+    with:
+        name: ${{ matrix.name }}
+        defconfig: ${{ matrix.defconfig }}

@@ -1,22 +1,23 @@
-name: "br-meshtastic: raspberrypi"
+name: "build: raspberrypi"
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
+
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+        description: "Board friendly name"
+      defconfig:
+        required: true
+        type: string
+        description: "buildroot defconfig"
 
 jobs:
-  mksys:
+  build:
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - name: "RPi Zero"
-            defconfig: "raspberrypi0"
-
-          - name: "RPi Zero W"
-            defconfig: "raspberrypi0w"
-
-          - name: "RPi Zero 2 W"
-            defconfig: "raspberrypizero2w"
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
@@ -27,7 +28,7 @@ jobs:
         with:
           max-size: "1G"
           create-symlink: true
-          key: ${{ matrix.defconfig }}
+          key: ${{ inputs.defconfig }}
 
       - name: Checkout Buildroot Repo
         uses: actions/checkout@v4
@@ -48,7 +49,7 @@ jobs:
           BR2_EXTERNAL: ${{ github.workspace }}/external
           FORCE_UNSAFE_CONFIGURE: "1"  # Bypass warning about root user, this is a container!
         run: |
-              make ${{ matrix.defconfig }}_defconfig
+              make ${{ inputs.defconfig }}_defconfig
               make
 
       - name: Upload Artifact
@@ -56,7 +57,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: "buildroot-meshtastic-${{ matrix.defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
+          name: "buildroot-meshtastic-${{ inputs.defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
           path: |
                   buildroot/output/images/**
           if-no-files-found: error

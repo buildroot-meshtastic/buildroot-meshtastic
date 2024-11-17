@@ -1,22 +1,27 @@
-name: "br-meshtastic: licheerv_nano"
+name: "build: licheerv_nano"
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
+
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+        description: "Board friendly name"
+      cvi_defconfig:
+        required: true
+        type: string
+        description: "cvi_sdk defconfig"
+      br_defconfig:
+        required: true
+        type: string
+        description: "buildroot defconfig"
 
 jobs:
-  mksys:
+  build:
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - name: "LicheeRV Nano RISC-V"
-            cvi_defconfig: "sg2002_licheervnano_sd"
-            br_defconfig: "cvitek_SG200X_musl_riscv64"
-
-          # # ARM fails at U-Boot compilation
-          # - name: "LicheeRV Nano ARM"
-          #   cvi_defconfig: "sg2002_licheea53nano_sd"
-          #   br_defconfig: "cvitek_SG200X_32bit"
 
     runs-on: [ self-hosted, linux ]
     container: ghcr.io/buildroot-meshtastic/buildroot-meshtastic-builder:main
@@ -27,7 +32,7 @@ jobs:
         with:
           max-size: "1G"
           create-symlink: true
-          key: licheerv_${{ matrix.cvi_defconfig }}
+          key: licheerv_${{ inputs.cvi_defconfig }}
 
       - name: Checkout LicheeRV-Nano-Build Repo
         uses: actions/checkout@v4
@@ -53,8 +58,8 @@ jobs:
         working-directory: ./cvi_mmf_sdk
         run: |
               source build/cvisetup.sh
-              defconfig ${{ matrix.cvi_defconfig }}
-              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external ${{ matrix.br_defconfig }}_defconfig BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
+              defconfig ${{ inputs.cvi_defconfig }}
+              make -C buildroot/ BR2_EXTERNAL=$GITHUB_WORKSPACE/external ${{ inputs.br_defconfig }}_defconfig BR2_TOOLCHAIN_EXTERNAL_PATH=$CROSS_COMPILE_PATH
               build_all
 
       - name: Upload Artifact
@@ -62,7 +67,7 @@ jobs:
         with:
           retention-days: 30
           compression-level: 9
-          name: "buildroot-meshtastic-${{ matrix.cvi_defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
+          name: "buildroot-meshtastic-${{ inputs.cvi_defconfig }}-${{ github.run_number }}.${{ github.run_attempt }}"
           path: |
-                  cvi_mmf_sdk/install/soc_${{ matrix.cvi_defconfig }}/images/**
+                  cvi_mmf_sdk/install/soc_${{ inputs.cvi_defconfig }}/images/**
           if-no-files-found: error

@@ -1,0 +1,36 @@
+name: "build_all: milkv_duo"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "Milk-V Duo (RISC-V)"
+            defconfig: "milkv-duo-musl-riscv64-sd"
+
+          # - name: "Milk-V Duo 256M (ARM)"
+          #   defconfig: "milkv-duo256m-glibc-arm64-sd"
+
+          - name: "Milk-V Duo 256M (RISC-V)"
+            defconfig: "milkv-duo256m-musl-riscv64-sd"
+
+          # - name: "Milk-V Duo S (ARM) EMMC"
+          #   defconfig: "milkv-duos-glibc-arm64-emmc"
+
+          # - name: "Milk-V Duo S (ARM) SD"
+          #   defconfig: "milkv-duos-glibc-arm64-sd"
+
+          - name: "Milk-V Duo S (RISC-V) EMMC"
+            defconfig: "milkv-duos-musl-riscv64-emmc"
+
+          - name: "Milk-V Duo S (RISC-V) SD"
+            defconfig: "milkv-duos-musl-riscv64-sd"
+
+    uses: ./.github/workflows/build-milkv_duo.yml
+    with:
+        name: ${{ matrix.name }}
+        defconfig: ${{ matrix.defconfig }}

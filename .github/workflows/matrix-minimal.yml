@@ -1,0 +1,43 @@
+name: "build: minimal"
+# Build one of each board type (sdk)
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  licheerv_nano:
+    strategy:
+      fail-fast: false
+    uses: ./.github/workflows/build-licheerv_nano.yml
+    with:
+        name: "LicheeRV Nano RISC-V"
+        cvi_defconfig: "sg2002_licheervnano_sd"
+        br_defconfig: "cvitek_SG200X_musl_riscv64"
+
+  luckfox_pico:
+    strategy:
+      fail-fast: false
+    uses: ./.github/workflows/build-luckfox_pico.yml
+    with:
+        name: "RV1103_Luckfox_Pico_Mini_A"
+        lunch_board: "1"
+        lunch_boot_medium: "0"  # SD_CARD
+
+  milkv_duo:
+    strategy:
+      fail-fast: false
+    uses: ./.github/workflows/build-milkv_duo.yml
+    with:
+        name: "Milk-V Duo (RISC-V)"
+        defconfig: "milkv-duo-musl-riscv64-sd"
+
+  raspberrypi:
+    strategy:
+      fail-fast: false
+    uses: ./.github/workflows/build-raspberrypi.yml
+    with:
+        name: "RPi Zero 2 W"
+        defconfig: "raspberrypizero2w"

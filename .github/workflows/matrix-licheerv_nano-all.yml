@@ -1,0 +1,25 @@
+name: "build_all: licheerv_nano"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mksys:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "LicheeRV Nano RISC-V"
+            cvi_defconfig: "sg2002_licheervnano_sd"
+            br_defconfig: "cvitek_SG200X_musl_riscv64"
+
+          # # ARM fails at U-Boot compilation
+          # - name: "LicheeRV Nano ARM"
+          #   cvi_defconfig: "sg2002_licheea53nano_sd"
+          #   br_defconfig: "cvitek_SG200X_32bit"
+
+    uses: ./.github/workflows/build-licheerv_nano.yml
+    with:
+        name: ${{ matrix.name }}
+        cvi_defconfig: ${{ matrix.cvi_defconfig }}
+        br_defconfig: ${{ matrix.br_defconfig }}
