@@ -5,11 +5,9 @@
 Intended for use with embedded Linux devices:
 - [LuckFox Pico Series](https://wiki.luckfox.com/luckfox-pico/luckfox-pico-quick-start/)
     - Compilation working with [uClibc-ng](https://uclibc-ng.org/)
-- [Sipeed LicheeRV Nano](https://wiki.sipeed.com/hardware/en/lichee/RV_Nano/1_intro.html)
-    - Primary testing target currently, working!
-    - Compilation working with [musl](https://musl.libc.org/)
 - [Milk-V Duo Series](https://milkv.io/docs/duo/overview)
-    - Untested
+    - Compilation working with [musl](https://musl.libc.org/)
+- [Sipeed LicheeRV Nano](https://wiki.sipeed.com/hardware/en/lichee/RV_Nano/1_intro.html)
     - Compilation working with [musl](https://musl.libc.org/)
 - [Raspberry Pi Zero series](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#zero-series)
     - Untested
@@ -21,7 +19,9 @@ Should work with other devices supported by Buildroot as well.
 
 ## Usage
 
-Prebuilt images are provided in the `Actions` tab.
+Prebuilt images are provided in the [`Actions`](https://github.com/buildroot-meshtastic/buildroot-meshtastic/actions/) tab.
+
+Default credentials: `root` : `large4cats`
 
 ## Build it yourself!
 
