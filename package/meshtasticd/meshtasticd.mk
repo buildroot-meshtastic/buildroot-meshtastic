@@ -85,6 +85,15 @@ MESHTASTICD_PLATFORMIO_BUILD_FLAGS += \
 	`$(PKG_CONFIG_HOST_BINARY) --libs openssl`
 endif
 
+# For avahi auto-discovery (optional)
+ifeq ($(BR2_PACKAGE_MESHTASTICD_AVAHI),y)
+MESHTASTICD_DEPENDENCIES += avahi
+define MESHTASTICD_AVAHI_INSTALL_TARGET_CMDS
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)/etc/avahi/services
+	$(INSTALL) -D -m 0755 $(MESHTASTICD_PKGDIR)/meshtasticd.avahi.xml $(TARGET_DIR)/etc/avahi/services/meshtasticd.service
+endef
+endif
+
 define MESHTASTICD_BUILD_CMDS
 	TARGET_AR="$(TARGET_AR)" \
 	TARGET_AS="$(TARGET_AS)" \
@@ -109,15 +118,8 @@ define MESHTASTICD_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(@D)/bin/config-dist.yaml $(TARGET_DIR)/etc/meshtasticd/config.yaml
 	$(INSTALL) -D -m 0644 $(@D)/bin/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
 	$(INSTALL) -D -m 0644 $(MESHTASTICD_PKGDIR)/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
+	$(MESHTASTICD_AVAHI_INSTALL_TARGET_CMDS)
 endef
-
-# For avahi auto-discovery (optional)
-ifeq ($(BR2_PACKAGE_MESHTASTICD_AVAHI),y)
-MESHTASTICD_DEPENDENCIES += avahi
-MESHTASTICD_INSTALL_TARGET_CMDS += \
-	$(INSTALL) -D -m 0755 $(MESHTASTICD_PKGDIR)/meshtasticd.avahi.xml \
-		$(TARGET_DIR)/etc/avahi/services/meshtasticd.service
-endif
 
 # Service (Daemon) files
 define MESHTASTICD_INSTALL_INIT_SYSV
