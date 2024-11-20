@@ -4,14 +4,11 @@
 
 Intended for use with embedded Linux devices:
 - [LuckFox Pico Series](https://wiki.luckfox.com/luckfox-pico/luckfox-pico-quick-start/)
-    - Compilation working with [uClibc-ng](https://uclibc-ng.org/)
 - [Milk-V Duo Series](https://milkv.io/docs/duo/overview)
-    - Compilation working with [musl](https://musl.libc.org/)
 - [Sipeed LicheeRV Nano](https://wiki.sipeed.com/hardware/en/lichee/RV_Nano/1_intro.html)
-    - Compilation working with [musl](https://musl.libc.org/)
-- [Raspberry Pi Zero series](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#zero-series)
-    - Untested
-    - Compilation working with [glibc](https://sourceware.org/glibc/)
+- [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
+
+See [docs/boards](/docs/boards.md) for additional details.
 
 Should work with other devices supported by Buildroot as well.
 
@@ -44,42 +41,16 @@ Default credentials: `root` : `large4cats`
 
 ## Packages
 
-| Package                 | Description                                  |
-| ----------------------- | -------------------------------------------- |
-| `meta-cli-tools`        | Meta-Package for installing common CLI tools |
-| `meshtasticd`           | Meshtastic 'native-linux' daemon             |
-| `meshtasticd-web`       | `meshtasticd` web server                     |
-| `python-meshtastic`     | Meshtastic python library (untested/revisit) |
-| `python-meshing-around` | BBS / Bot for meshtastic                     |
+The following packages are included by default:
 
-## Dependencies
+| Package                                                                     | Description                                  |
+| --------------------------------------------------------------------------- | -------------------------------------------- |
+| [`meta-cli-tools`](/package/meta-cli-tools)                                 | Meta-Package for installing common CLI tools |
+| [`meshtasticd`](/package/meshtasticd)                                       | Meshtastic 'native-linux' daemon             |
+| [`meshtasticd-web`](/package/meshtasticd-web)                               | `meshtasticd` web server                     |
+| [`python-meshtastic`](/package/python-meshtastic)                           | Meshtastic python library                    |
 
-| Package                     | Description                         |
-| --------------------------- | ----------------------------------- |
-| `host-compat-python-pip`    | host-dep for multiple packages      |
-| `host-compat-poetry-core`   | host-dep for multiple packages      |
-| `host-compat-python-click`  | dep for `host-python-platformio`    |
-| `host-python-tabulate`      | dep for `host-python-platformio`    |
-| `host-python-platformio`    | host-dep for `meshtasticd`          |
-| `liborcania`                | dep for `meshtasticd-web`           |
-| `libyder`                   | dep for `meshtasticd-web`           |
-| `libulfius`                 | dep for `meshtasticd-web`           |
-| `python-dotmap`             | dep for `python-meshtastic`         |
-| `python-tabulate`           | dep for `python-meshtastic`         |
-| `python-pypubsub`           | dep for `python-meshtastic`         |
-| `python-print-color`        | dep for `python-meshtastic`         |
-| `python-geographiclib`      | dep for `python-geopy`              |
-| `python-geopy`              | dep for `python-meshing-around`     |
-| `python-ephem`              | dep for `python-meshing-around`     |
-| `python-maidenhead`         | dep for `python-meshing-around`     |
-| `python-openmeteo-sdk`      | dep for `python-openmeteo-requests` |
-| `python-openmeteo-requests` | dep for `python-meshing-around`     |
-
-### Vendor-specific Dependencies
-
-| Package             | Description                                                             |
-| ------------------- | ----------------------------------------------------------------------- |
-| `lichee-cvi-pinmux` | Used for mapping pins on LicheeRV Nano, already included on Milk-V Duo. |
+See [docs/packages](/docs/packages.md) for additional details including dependencies and optional packages (BBS's, etc)
 
 ---
 

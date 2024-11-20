@@ -17,6 +17,18 @@ jobs:
 
           - name: "RPi Zero 2 W"
             defconfig: "raspberrypizero2w"
+          
+          - name: "RPi 1"
+            defconfig: "raspberrypi"
+          
+          - name: "RPi 2"
+            defconfig: "raspberrypi2"
+          
+          - name: "RPi 3 (32-bit)"
+            defconfig: "raspberrypi3"
+          
+          - name: "RPi 3 (64-bit)"
+            defconfig: "raspberrypi3_64"
 
     uses: ./.github/workflows/build-raspberrypi.yml
     with:
