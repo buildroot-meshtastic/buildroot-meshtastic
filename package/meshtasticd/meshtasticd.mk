@@ -111,7 +111,15 @@ define MESHTASTICD_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(MESHTASTICD_PKGDIR)/config.d/* $(TARGET_DIR)/etc/meshtasticd/available.d/
 endef
 
-# Service (Daemon) files -- Untested
+# For avahi auto-discovery (optional)
+ifeq ($(BR2_PACKAGE_MESHTASTICD_AVAHI),y)
+MESHTASTICD_DEPENDENCIES += avahi
+MESHTASTICD_INSTALL_TARGET_CMDS += \
+	$(INSTALL) -D -m 0755 $(MESHTASTICD_PKGDIR)/meshtasticd.avahi.xml \
+		$(TARGET_DIR)/etc/avahi/services/meshtasticd.service
+endif
+
+# Service (Daemon) files
 define MESHTASTICD_INSTALL_INIT_SYSV
 	$(INSTALL) -D -m 0755 $(MESHTASTICD_PKGDIR)/S99meshtasticd \
 		$(TARGET_DIR)/etc/init.d/S99meshtasticd

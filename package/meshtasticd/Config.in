@@ -26,3 +26,14 @@ config BR2_PACKAGE_MESHTASTICD
 	  meshtasticd portduino
 
 	  https://meshtastic.org/docs/software/linux-native/
+
+if BR2_PACKAGE_MESHTASTICD
+
+config BR2_PACKAGE_MESHTASTICD_AVAHI
+	bool "avahi support"
+	default y
+	select BR2_PACKAGE_AVAHI
+	help
+	  Enable support for avahi (tcp autodicovery)
+
+endif
