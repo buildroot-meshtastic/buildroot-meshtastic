@@ -24,5 +24,11 @@
     }
   ],
   "packageRules": [
+    {
+      "description": "Set python-meshtastic Changelog Location",
+      "matchDepNames": ["python-meshtastic"],
+      "matchDatasources": ["pypi"],
+      "customChangelogUrl": "https://github.com/meshtastic/python"
+    }
   ]
 }
