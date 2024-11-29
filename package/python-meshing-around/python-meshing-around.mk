@@ -5,7 +5,7 @@
 ################################################################################
 
 # renovate: datasource=github-releases depName=python-meshing-around packageName=SpudGunMan/meshing-around versioning=semver
-PYTHON_MESHING_AROUND_VERSION = 1.4.7
+PYTHON_MESHING_AROUND_VERSION = 1.4.9
 PYTHON_MESHING_AROUND_SITE = $(call github,SpudGunMan,meshing-around,v$(PYTHON_MESHING_AROUND_VERSION))
 PYTHON_MESHING_AROUND_LICENSE = GPL-3.0
 PYTHON_MESHING_AROUND_LICENSE_FILES = LICENSE
