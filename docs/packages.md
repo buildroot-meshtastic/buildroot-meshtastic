@@ -2,15 +2,15 @@
 
 ## Packages
 
-| Package                                                                     | Description                                  |
-| --------------------------------------------------------------------------- | -------------------------------------------- |
-| [`meta-cli-tools`](/package/meta-cli-tools)                                 | Meta-Package for installing common CLI tools |
-| [`meshtasticd`](/package/meshtasticd)                                       | Meshtastic 'native-linux' daemon             |
-| [`meshtasticd-web`](/package/meshtasticd-web)                               | `meshtasticd` web server                     |
-| [`python-meshtastic`](/package/python-meshtastic)                           | Meshtastic python library                    |
-| [`python-meshing-around`](/package/python-meshing-around)                   | BBS / Bot for meshtastic                     |
-| [`python-meshtastic-channel-link`](/package/python-meshtastic-channel-link) | Radio-Bridging Bot for Meshtastic            |
-| [`python-meshtastic-tc2-bbs`](/package/python-meshtastic-tc2-bbs)           | TheCommsChannel (TC2) Meshtastic BBS         |
+| Package                                                                     | Bundled in Releases | Description                                  |
+| --------------------------------------------------------------------------- | ------------------- | -------------------------------------------- |
+| [`meta-cli-tools`](/package/meta-cli-tools)                                 | ✅                  | Meta-Package for installing common CLI tools |
+| [`meshtasticd`](/package/meshtasticd)                                       | ✅                  | Meshtastic 'native-linux' daemon             |
+| [`meshtasticd-web`](/package/meshtasticd-web)                               | ✅                  | `meshtasticd` web server                     |
+| [`python-meshtastic`](/package/python-meshtastic)                           | ✅                  | Meshtastic python library                    |
+| [`python-meshing-around`](/package/python-meshing-around)                   | ❌                  | BBS / Bot for meshtastic                     |
+| [`python-meshtastic-channel-link`](/package/python-meshtastic-channel-link) | ❌                  | Radio-Bridging Bot for Meshtastic            |
+| [`python-meshtastic-tc2-bbs`](/package/python-meshtastic-tc2-bbs)           | ❌                  | TheCommsChannel (TC2) Meshtastic BBS         |
 
 ## Dependencies
 

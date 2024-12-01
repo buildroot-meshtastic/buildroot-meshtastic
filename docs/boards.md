@@ -14,7 +14,7 @@ Toolchain: `uClibc-ng` -- `arm-rockchip830-linux-uclibcgnueabihf` Bundled with S
 
 | Board           | Boot Medium | Tested? | Notes |
 | --------------- | ----------- | ------- | ----- |
-| Pico            | SD Card     | ❌      |       |
+| Pico            | SD Card     | ✅      |       |
 | Pico Mini A     | SD Card     | ✅      |       |
 | ~~Pico Mini B~~ | SPI-NAND    | ⚠️      | `Mini B` is not built. SPI-NAND conflicts with `meshtasticd`. |
 | Pico Plus       | SD Card     | ❌      |       |
