@@ -20,6 +20,7 @@ RUN ldconfig && apt update -y && \
     gettext autoconf-archive clang module-assistant expect \
     g++ gperf python-is-python3 passwd openssl \
     gcc-multilib g++-multilib \
+    swig \
     && apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
