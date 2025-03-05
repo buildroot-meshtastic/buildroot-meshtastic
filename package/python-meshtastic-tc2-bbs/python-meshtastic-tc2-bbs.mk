@@ -5,7 +5,7 @@
 ################################################################################
 
 # renovate: datasource=git-refs depName=python-meshtastic-tc2-bbs packageName=https://github.com/TheCommsChannel/TC2-BBS-mesh versioning=git gitBranch=main
-PYTHON_MESHTASTIC_TC2_BBS_GITDIGEST = 141eb051567479d227bf446cc06578e7ce2bcced
+PYTHON_MESHTASTIC_TC2_BBS_GITDIGEST = 295fb35c92e376367b05a6429c481191baa23d17
 PYTHON_MESHTASTIC_TC2_BBS_VERSION = $(PYTHON_MESHTASTIC_TC2_BBS_GITDIGEST)
 PYTHON_MESHTASTIC_TC2_BBS_SITE = $(call github,TheCommsChannel,TC2-BBS-mesh,v$(PYTHON_MESHTASTIC_TC2_BBS_VERSION))
 PYTHON_MESHTASTIC_TC2_BBS_LICENSE = GPL-3.0
