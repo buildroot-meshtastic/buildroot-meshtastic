@@ -31,14 +31,14 @@ jobs:
           key: ${{ inputs.defconfig }}
 
       - name: Checkout Buildroot Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
             repository: 'buildroot/buildroot'
             path: 'buildroot'
             ref: '2024.08.x'
 
       - name: Checkout this Repo to 'external'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
             path: 'external'
 
