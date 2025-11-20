@@ -35,14 +35,14 @@ jobs:
           key: ${{ inputs.name }}
 
       - name: Checkout luckfox-pico Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             repository: 'buildroot-meshtastic/luckfox-pico'
             path: 'luckfox_pico_sdk'
             ref: 'vid_testing'  # vidplace7 branch
 
       - name: Checkout this Repo to 'external'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             path: 'external'
 

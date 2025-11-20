@@ -31,7 +31,7 @@ jobs:
           key: milkv_duo_${{ inputs.defconfig }}
 
       - name: Checkout duo-buildroot-sdk-v2 Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             repository: 'buildroot-meshtastic/duo-buildroot-sdk-v2'
             path: 'duo_sdk'
@@ -39,14 +39,14 @@ jobs:
             ref: 'milkv_duo'  # mark birss branch
 
       - name: Checkout milkv-duo host-tools
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             repository: 'buildroot-meshtastic/milkv-duo-host-tools'
             path: 'duo_sdk/host-tools'
             ref: 'meshtastic'
 
       - name: Checkout this Repo to 'external'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             path: 'external'
 

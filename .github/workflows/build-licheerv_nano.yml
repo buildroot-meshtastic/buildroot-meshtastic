@@ -35,21 +35,21 @@ jobs:
           key: licheerv_${{ inputs.cvi_defconfig }}
 
       - name: Checkout LicheeRV-Nano-Build Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             repository: 'buildroot-meshtastic/LicheeRV-Nano-Build'
             path: 'cvi_mmf_sdk'
             ref: 'licheervnano'  # markbirss branch
 
       - name: Checkout sophgo host-tools
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             repository: 'buildroot-meshtastic/sophgo-host-tools'
             path: 'cvi_mmf_sdk/host-tools'
             ref: 'meshtastic'
 
       - name: Checkout this Repo to 'external'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
             path: 'external'
 
