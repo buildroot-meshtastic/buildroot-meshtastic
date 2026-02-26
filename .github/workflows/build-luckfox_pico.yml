@@ -108,7 +108,7 @@ jobs:
               ./blkenvflash buildroot-meshtastic-${{ inputs.name }}-${{ github.run_number }}.${{ github.run_attempt }}.img
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           retention-days: 30
           compression-level: 9
